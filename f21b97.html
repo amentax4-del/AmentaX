@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AX-S7 — Booking & Payment</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link id="heading-font-link" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link id="body-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          spacing: {
+            base: '1rem',
+          },
+          borderRadius: {
+            small: '8px',
+            large: '16px',
+          },
+          boxShadow: {
+            custom: 'var(--shadow-custom)',
+            'custom-hover': 'var(--shadow-custom-hover)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      /* Typography */
+      --font-heading-name: 'Poppins';
+      --font-body-name: 'Inter';
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --letter-spacing-heading: -0.5px;
+      --letter-spacing-body: 0px;
+      
+      /* Spacing */
+      --space-base: 1rem;
+      
+      /* Borders */
+      --radius-small: 8px;
+      --radius-large: 16px;
+      --border-width: 2px;
+      
+      /* Shadows */
+      --shadow-color: 0 0 0;
+      --shadow-offset-x: 0px;
+      --shadow-offset-y: 4px;
+      --shadow-blur: 12px;
+      --shadow-spread: 0px;
+      --shadow-opacity: 0.1;
+      --shadow-custom: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      --shadow-custom-hover: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body class="font-body bg-gray-50 text-gray-900" style="height: auto; min-height: 100%;">
+  
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
+      <div class="p-6 border-b border-gray-200">
+        <a href="#landing">
+          <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=120&h=40&fit=crop" alt="Logo" class="h-8">
+        </a>
+      </div>
+      
+      <nav class="flex-1 p-4">
+        <ul class="space-y-2">
+          <li>
+            <a href="#dashboard" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-small font-medium transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+              </svg>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="#mentors" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-small font-medium transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+              </svg>
+              Find Mentors
+            </a>
+          </li>
+          <li>
+            <a href="#sessions" class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-600 rounded-small font-medium">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+              </svg>
+              My Sessions
+            </a>
+          </li>
+          <li>
+            <a href="#progress" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-small font-medium transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Progress
+            </a>
+          </li>
+          <li>
+            <a href="#resources" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-small font-medium transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+              </svg>
+              Resources
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="p-4 border-t border-gray-200">
+        <div class="flex items-center gap-3 px-4 py-3">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop" alt="Profile" class="w-10 h-10 rounded-full">
+          <div class="flex-1">
+            <div class="font-semibold text-gray-900 text-sm">Sneha Reddy</div>
+            <div class="text-xs text-gray-500">JEE 2024 Aspirant</div>
+          </div>
+          <button class="text-gray-400 hover:text-gray-600">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <!-- Header -->
+      <header class="bg-white border-b border-gray-200 px-8 py-4 max-h-[80px]">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <a href="#mentor-profile" class="text-gray-400 hover:text-gray-600 transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+            <div>
+              <h1 class="font-heading text-2xl font-bold text-gray-900">Book Session with Rahul</h1>
+              <p class="text-sm text-gray-600">Complete your booking in 3 easy steps</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="relative p-2 text-gray-400 hover:text-gray-600 transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
+              </svg>
+              <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Progress Steps -->
+      <section class="bg-white border-b border-gray-200 px-8 py-6 max-h-[120px]">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900 text-sm">Time Slot</div>
+                <div class="text-xs text-gray-500">Selected</div>
+              </div>
+            </div>
+            
+            <div class="flex-1 h-0.5 bg-blue-600 mx-4"></div>
+            
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold">2</div>
+              <div>
+                <div class="font-semibold text-gray-900 text-sm">Package</div>
+                <div class="text-xs text-blue-600">Current Step</div>
+              </div>
+            </div>
+            
+            <div class="flex-1 h-0.5 bg-gray-300 mx-4"></div>
+            
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-semibold">3</div>
+              <div>
+                <div class="font-semibold text-gray-500 text-sm">Payment</div>
+                <div class="text-xs text-gray-400">Next</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Booking Content -->
+      <div class="p-8 max-h-[2000px] overflow-auto">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8">
+          
+          <!-- Left Column - Booking Options -->
+          <div class="lg:col-span-2 space-y-6">
+            
+            <!-- Limited Time Offer Banner -->
+            <div class="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-large p-6 shadow-custom">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="font-heading text-xl font-bold">Limited Time Offer!</span>
+                  </div>
+                  <p class="text-white text-opacity-90 mb-3">Book your first session at 90% off. Only 12 spots left today!</p>
+                  <div class="flex items-center gap-4">
+                    <div class="bg-white bg-opacity-20 px-4 py-2 rounded-small">
+                      <div class="text-2xl font-bold">14:23</div>
+                      <div class="text-xs">Time Left</div>
+                    </div>
+                    <div class="text-sm">
+                      <div class="font-semibold">12 students</div>
+                      <div class="text-white text-opacity-80">booked in last hour</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-white text-orange-600 px-4 py-2 rounded-small font-bold text-lg">
+                  90% OFF
+                </div>
+              </div>
+            </div>
+
+            <!-- Package Selection -->
+            <div class="bg-white rounded-large shadow-custom p-6">
+              <h2 class="font-heading text-2xl font-bold text-gray-900 mb-6">Choose Your Package</h2>
+              
+              <div class="space-y-4">
+                <!-- Trial Package - Featured -->
+                <div class="border-4 border-blue-600 rounded-large p-6 bg-blue-50 cursor-pointer relative overflow-hidden">
+                  <div class="absolute top-0 right-0 bg-blue-600 text-white px-4 py-1 text-xs font-bold rounded-bl-large">
+                    MOST POPULAR
+                  </div>
+                  <div class="flex items-start justify-between gap-4 mb-4">
+                    <div class="flex-1">
+                      <div class="flex items-center gap-3 mb-2">
+                        <input type="radio" name="package" id="trial" checked class="w-5 h-5 text-blue-600">
+                        <label for="trial" class="font-heading text-xl font-bold text-gray-900 cursor-pointer">15-Minute Trial Session</label>
+                      </div>
+                      <p class="text-gray-600 text-sm mb-3">Perfect for first-time users. Get a feel for our mentorship style.</p>
+                      <div class="flex flex-wrap gap-2">
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-small text-xs font-semibold">✓ Instant booking</span>
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-small text-xs font-semibold">✓ No commitment</span>
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-small text-xs font-semibold">✓ Full refund if unsatisfied</span>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <div class="flex items-baseline gap-2 mb-1">
+                        <span class="font-heading text-4xl font-bold text-blue-600">₹49</span>
+                        <span class="text-lg text-gray-500 line-through">₹499</span>
+                      </div>
+                      <div class="bg-red-500 text-white px-3 py-1 rounded-small text-sm font-bold inline-block">
+                        SAVE 90%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 30-Minute Session -->
+                <div class="border-2 border-gray-300 rounded-large p-6 hover:border-blue-600 transition-colors cursor-pointer">
+                  <div class="flex items-start justify-between gap-4">
+                    <div class="flex-1">
+                      <div class="flex items-center gap-3 mb-2">
+                        <input type="radio" name="package" id="session30" class="w-5 h-5 text-blue-600">
+                        <label for="session30" class="font-heading text-xl font-bold text-gray-900 cursor-pointer">30-Minute Session</label>
+                      </div>
+                      <p class="text-gray-600 text-sm mb-3">Deep dive into specific topics. Includes session notes and recording.</p>
+                      <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-small text-xs font-semibold">✓ Session recording</span>
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-small text-xs font-semibold">✓ Detailed notes</span>
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-small text-xs font-semibold">✓ Follow-up support</span>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <div class="flex items-baseline gap-2 mb-1">
+                        <span class="font-heading text-3xl font-bold text-gray-900">₹299</span>
+                        <span class="text-sm text-gray-500 line-through">₹499</span>
+                      </div>
+                      <div class="bg-yellow-500 text-white px-3 py-1 rounded-small text-sm font-bold inline-block">
+                        SAVE 40%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 1-Hour Session -->
+                <div class="border-2 border-gray-300 rounded-large p-6 hover:border-blue-600 transition-colors cursor-pointer">
+                  <div class="flex items-start justify-between gap-4">
+                    <div class="flex-1">
+                      <div class="flex items-center gap-3 mb-2">
+                        <input type="radio" name="package" id="session60" class="w-5 h-5 text-blue-600">
+                        <label for="session60" class="font-heading text-xl font-bold text-gray-900 cursor-pointer">1-Hour Intensive Session</label>
+                      </div>
+                      <p class="text-gray-600 text-sm mb-3">Comprehensive coverage of multiple topics. Best value for serious learners.</p>
+                      <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-small text-xs font-semibold">✓ Everything in 30-min</span>
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-small text-xs font-semibold">✓ Study plan</span>
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-small text-xs font-semibold">✓ Priority support</span>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <div class="flex items-baseline gap-2 mb-1">
+                        <span class="font-heading text-3xl font-bold text-gray-900">₹499</span>
+                        <span class="text-sm text-gray-500 line-through">₹999</span>
+                      </div>
+                      <div class="bg-green-500 text-white px-3 py-1 rounded-small text-sm font-bold inline-block">
+                        SAVE 50%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bundle Packages -->
+                <div class="border-2 border-purple-600 rounded-large p-6 bg-purple-50 cursor-pointer">
+                  <div class="flex items-start justify-between gap-4">
+                    <div class="flex-1">
+                      <div class="flex items-center gap-3 mb-2">
+                        <input type="radio" name="package" id="bundle5" class="w-5 h-5 text-purple-600">
+                        <label for="bundle5" class="font-heading text-xl font-bold text-gray-900 cursor-pointer">5-Session Bundle</label>
+                        <span class="bg-purple-600 text-white px-3 py-1 rounded-small text-xs font-bold">BEST VALUE</span>
+                      </div>
+                      <p class="text-gray-600 text-sm mb-3">Save big with our bundle. Perfect for exam preparation over weeks.</p>
+                      <div class="flex flex-wrap gap-2">
+                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-small text-xs font-semibold">✓ All premium features</span>
+                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-small text-xs font-semibold">✓ Flexible scheduling</span>
+                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-small text-xs font-semibold">✓ 90-day validity</span>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <div class="flex items-baseline gap-2 mb-1">
+                        <span class="font-heading text-4xl font-bold text-purple-600">₹1,999</span>
+                        <span class="text-lg text-gray-500 line-through">₹4,995</span>
+                      </div>
+                      <div class="text-sm text-gray-600 mb-1">₹399 per session</div>
+                      <div class="bg-purple-600 text-white px-3 py-1 rounded-small text-sm font-bold inline-block">
+                        SAVE 60%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="border-2 border-gray-300 rounded-large p-6 hover:border-blue-600 transition-colors cursor-pointer">
+                  <div class="flex items-start justify-between gap-4">
+                    <div class="flex-1">
+                      <div class="flex items-center gap-3 mb-2">
+                        <input type="radio" name="package" id="bundle10" class="w-5 h-5 text-blue-600">
+                        <label for="bundle10" class="font-heading text-xl font-bold text-gray-900 cursor-pointer">10-Session Bundle</label>
+                      </div>
+                      <p class="text-gray-600 text-sm mb-3">Maximum savings for long-term mentorship. Ideal for complete exam prep.</p>
+                      <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-small text-xs font-semibold">✓ All premium features</span>
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-small text-xs font-semibold">✓ Priority booking</span>
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-small text-xs font-semibold">✓ 180-day validity</span>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <div class="flex items-baseline gap-2 mb-1">
+                        <span class="font-heading text-4xl font-bold text-gray-900">₹3,499</span>
+                        <span class="text-lg text-gray-500 line-through">₹9,990</span>
+                      </div>
+                      <div class="text-sm text-gray-600 mb-1">₹349 per session</div>
+                      <div class="bg-green-500 text-white px-3 py-1 rounded-small text-sm font-bold inline-block">
+                        SAVE 65%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Coupon Section -->
+            <div class="bg-white rounded-large shadow-custom p-6">
+              <h3 class="font-heading text-xl font-bold text-gray-900 mb-4">Apply Coupon Code</h3>
+              
+              <div class="flex gap-3 mb-4">
+                <input type="text" placeholder="Enter coupon code" class="flex-1 px-4 py-3 border-2 border-gray-300 rounded-small focus:border-blue-600 focus:outline-none font-medium">
+                <button class="bg-blue-600 text-white px-6 py-3 rounded-small font-semibold hover:bg-blue-700 transition-colors">
+                  Apply
+                </button>
+              </div>
+
+              <!-- Auto-Suggested Coupons -->
+              <div class="space-y-3">
+                <div class="border-2 border-green-500 rounded-large p-4 bg-green-50 cursor-pointer hover:bg-green-100 transition-colors">
+                  <div class="flex items-center justify-between gap-4">
+                    <div class="flex-1">
+                      <div class="flex items-center gap-2 mb-1">
+                        <span class="font-heading text-lg font-bold text-gray-900">FIRST50</span>
+                        <span class="bg-green-500 text-white px-2 py-1 rounded text-xs font-bold">RECOMMENDED</span>
+                      </div>
+                      <p class="text-sm text-gray-600">Get ₹50 off on your first booking</p>
+                    </div>
+                    <button class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                      Apply
+                    </button>
+                  </div>
+                </div>
+
+                <div class="border-2 border-gray-300 rounded-large p-4 cursor-pointer hover:border-blue-600 transition-colors">
+                  <div class="flex items-center justify-between gap-4">
+                    <div class="flex-1">
+                      <div class="font-heading text-lg font-bold text-gray-900 mb-1">BUNDLE20</div>
+                      <p class="text-sm text-gray-600">Extra 20% off on bundle packages</p>
+                    </div>
+                    <button class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                      Apply
+                    </button>
+                  </div>
+                </div>
+
+                <div class="border-2 border-gray-300 rounded-large p-4 cursor-pointer hover:border-blue-600 transition-colors">
+                  <div class="flex items-center justify-between gap-4">
+                    <div class="flex-1">
+                      <div class="font-heading text-lg font-bold text-gray-900 mb-1">REFER100</div>
+                      <p class="text-sm text-gray-600">₹100 off when you refer a friend</p>
+                    </div>
+                    <button class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                      Apply
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Wallet Cashback -->
+            <div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-large p-6 shadow-custom">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
+                      <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="font-heading text-xl font-bold">Wallet Balance: ₹150</span>
+                  </div>
+                  <p class="text-white text-opacity-90 mb-3">Use your wallet balance and get 10% extra cashback on this booking!</p>
+                  <div class="flex items-center gap-2">
+                    <input type="checkbox" id="use-wallet" class="w-4 h-4">
+                    <label for="use-wallet" class="text-sm font-semibold cursor-pointer">Use ₹150 from wallet</label>
+                  </div>
+                </div>
+                <div class="bg-white bg-opacity-20 px-4 py-3 rounded-small text-center">
+                  <div class="text-2xl font-bold">+10%</div>
+                  <div class="text-xs">Cashback</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column - Summary & Payment -->
+          <div class="lg:col-span-1">
+            <div class="sticky top-8 space-y-6">
+              
+              <!-- Booking Summary -->
+              <div class="bg-white rounded-large shadow-custom p-6">
+                <h3 class="font-heading text-xl font-bold text-gray-900 mb-4">Booking Summary</h3>
+                
+                <!-- Mentor Info -->
+                <div class="flex items-center gap-3 pb-4 mb-4 border-b border-gray-200">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop" alt="Rahul Sharma" class="w-12 h-12 rounded-full">
+                  <div>
+                    <div class="font-semibold text-gray-900">Rahul Sharma</div>
+                    <div class="text-sm text-gray-600">JEE AIR 47</div>
+                  </div>
+                </div>
+
+                <!-- Selected Details -->
+                <div class="space-y-3 mb-4">
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-600">Date & Time</span>
+                    <span class="font-semibold text-gray-900">Dec 20, 4:00 PM</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-600">Duration</span>
+                    <span class="font-semibold text-gray-900">15 minutes</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-600">Session Type</span>
+                    <span class="font-semibold text-gray-900">Trial Session</span>
+                  </div>
+                </div>
+
+                <!-- Price Breakdown -->
+                <div class="border-t border-gray-200 pt-4 space-y-2 mb-4">
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-600">Base Price</span>
+                    <span class="text-gray-900">₹499</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-green-600">Trial Discount (90%)</span>
+                    <span class="text-green-600">-₹450</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-600">Wallet Balance</span>
+                    <span class="text-gray-900">-₹0</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-blue-600">Cashback (10%)</span>
+                    <span class="text-blue-600">+₹5</span>
+                  </div>
+                </div>
+
+                <!-- Total -->
+                <div class="border-t-2 border-gray-300 pt-4 mb-6">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="font-heading text-lg font-bold text-gray-900">Total Amount</span>
+                    <span class="font-heading text-3xl font-bold text-blue-600">₹49</span>
+                  </div>
+                  <div class="text-xs text-gray-500">You save ₹450 on this booking</div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="mb-4">
+                  <h4 class="font-semibold text-gray-900 mb-3">Payment Method</h4>
+                  
+                  <div class="space-y-2">
+                    <div class="border-2 border-blue-600 rounded-large p-3 bg-blue-50 cursor-pointer">
+                      <div class="flex items-center gap-3">
+                        <input type="radio" name="payment" id="upi" checked class="w-4 h-4 text-blue-600">
+                        <label for="upi" class="flex-1 cursor-pointer">
+                          <div class="font-semibold text-gray-900">UPI</div>
+                          <div class="text-xs text-gray-600">Google Pay, PhonePe, Paytm</div>
+                        </label>
+                        <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
+                          <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/>
+                        </svg>
+                      </div>
+                    </div>
+
+                    <div class="border-2 border-gray-300 rounded-large p-3 cursor-pointer hover:border-blue-600 transition-colors">
+                      <div class="flex items-center gap-3">
+                        <input type="radio" name="payment" id="card" class="w-4 h-4 text-blue-600">
+                        <label for="card" class="flex-1 cursor-pointer">
+                          <div class="font-semibold text-gray-900">Credit/Debit Card</div>
+                          <div class="text-xs text-gray-600">Visa, Mastercard, RuPay</div>
+                        </label>
+                        <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
+                          <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/>
+                        </svg>
+                      </div>
+                    </div>
+
+                    <div class="border-2 border-gray-300 rounded-large p-3 cursor-pointer hover:border-blue-600 transition-colors">
+                      <div class="flex items-center gap-3">
+                        <input type="radio" name="payment" id="netbanking" class="w-4 h-4 text-blue-600">
+                        <label for="netbanking" class="flex-1 cursor-pointer">
+                          <div class="font-semibold text-gray-900">Net Banking</div>
+                          <div class="text-xs text-gray-600">All major banks</div>
+                        </label>
+                        <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Pay Button -->
+                <button class="w-full bg-blue-600 text-white py-4 rounded-small font-semibold text-lg hover:bg-blue-700 transition-colors shadow-custom mb-3">
+                  Proceed to Pay ₹49
+                </button>
+
+                <!-- Trust Badges -->
+                <div class="flex items-center justify-center gap-4 text-xs text-gray-500">
+                  <div class="flex items-center gap-1">
+                    <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Secure Payment</span>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>256-bit SSL</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Refund Policy -->
+              <div class="bg-green-50 border-2 border-green-500 rounded-large p-4">
+                <div class="flex items-start gap-3">
+                  <svg class="w-6 h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 mb-1">100% Money-Back Guarantee</h4>
+                    <p class="text-sm text-gray-600 mb-2">Not satisfied with your session? Get a full refund within 24 hours, no questions asked.</p>
+                    <a href="#" class="text-blue-600 text-sm font-semibold hover:text-blue-700">View Refund Policy →</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Trust Badges -->
+              <div class="bg-white rounded-large shadow-custom p-4">
+                <h4 class="font-semibold text-gray-900 mb-3 text-sm">Why Book with Us?</h4>
+                <div class="space-y-2 text-xs">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-gray-700">Instant booking confirmation</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-gray-700">Session recording included</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-gray-700">Detailed session notes</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-gray-700">24/7 customer support</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-gray-700">Verified mentor guarantee</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>

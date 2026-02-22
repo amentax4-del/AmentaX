@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AX-S9 — Post Session Review</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link id="heading-font-link" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link id="body-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          spacing: {
+            base: '1rem',
+          },
+          borderRadius: {
+            small: '8px',
+            large: '16px',
+          },
+          boxShadow: {
+            custom: 'var(--shadow-custom)',
+            'custom-hover': 'var(--shadow-custom-hover)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      /* Typography */
+      --font-heading-name: 'Poppins';
+      --font-body-name: 'Inter';
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --letter-spacing-heading: -0.5px;
+      --letter-spacing-body: 0px;
+      
+      /* Spacing */
+      --space-base: 1rem;
+      
+      /* Borders */
+      --radius-small: 8px;
+      --radius-large: 16px;
+      --border-width: 2px;
+      
+      /* Shadows */
+      --shadow-color: 0 0 0;
+      --shadow-offset-x: 0px;
+      --shadow-offset-y: 4px;
+      --shadow-blur: 12px;
+      --shadow-spread: 0px;
+      --shadow-opacity: 0.1;
+      --shadow-custom: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      --shadow-custom-hover: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body class="font-body bg-gray-50 text-gray-900" style="height: auto; min-height: 100%;">
+  
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
+      <div class="p-6 border-b border-gray-200">
+        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=120&h=40&fit=crop" alt="AmentaX Logo" class="h-8">
+      </div>
+      
+      <nav class="flex-1 p-4">
+        <ul class="space-y-2">
+          <li>
+            <a href="#dashboard" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-small transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+              </svg>
+              <span class="font-medium">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#mentors" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-small transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+              </svg>
+              <span class="font-medium">Find Mentors</span>
+            </a>
+          </li>
+          <li>
+            <a href="#sessions" class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-600 rounded-small">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+              </svg>
+              <span class="font-semibold">My Sessions</span>
+            </a>
+          </li>
+          <li>
+            <a href="#progress" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-small transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+              </svg>
+              <span class="font-medium">Progress</span>
+            </a>
+          </li>
+          <li>
+            <a href="#resources" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-small transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+              </svg>
+              <span class="font-medium">Resources</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="p-4 border-t border-gray-200">
+        <div class="flex items-center gap-3 px-4 py-3">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop" alt="Profile" class="w-10 h-10 rounded-full">
+          <div class="flex-1 min-w-0">
+            <div class="font-semibold text-sm text-gray-900 truncate">Sneha Reddy</div>
+            <div class="text-xs text-gray-500 truncate">JEE Aspirant</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto">
+      
+      <!-- Header -->
+      <header class="bg-white border-b border-gray-200 px-8 py-6 max-h-[100px]">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="font-heading text-2xl font-bold text-gray-900">Session Review</h1>
+            <p class="text-sm text-gray-600 mt-1">Share your feedback and book your next session</p>
+          </div>
+          <a href="#dashboard" class="text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors">Back to Dashboard</a>
+        </div>
+      </header>
+
+      <!-- Review Content -->
+      <div class="p-8 max-h-[calc(100vh-100px)] overflow-auto">
+        <div class="max-w-4xl mx-auto space-y-6">
+          
+          <!-- Session Summary Card -->
+          <div class="bg-white rounded-large shadow-custom p-6">
+            <div class="flex items-start gap-4 pb-6 border-b border-gray-200">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop" alt="Rahul Sharma" class="w-16 h-16 rounded-full">
+              <div class="flex-1">
+                <h2 class="font-heading text-xl font-bold text-gray-900 mb-1">Session with Rahul Sharma</h2>
+                <div class="flex items-center gap-4 text-sm text-gray-600">
+                  <div class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Today, 4:00 PM</span>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>45 minutes</span>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-blue-600 font-semibold">JEE AIR 47</span>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-green-100 text-green-700 px-4 py-2 rounded-small font-semibold text-sm">
+                Completed
+              </div>
+            </div>
+            
+            <!-- AI-Generated Session Summary -->
+            <div class="mt-6">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"/>
+                  <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"/>
+                </svg>
+                <h3 class="font-heading text-lg font-semibold text-gray-900">AI Session Summary</h3>
+              </div>
+              <div class="bg-blue-50 rounded-large p-4 space-y-3">
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Topics Covered:</h4>
+                  <ul class="space-y-1 text-sm text-gray-700">
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                      </svg>
+                      <span>Rotational Motion - Fundamentals and key formulas</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                      </svg>
+                      <span>Problem-solving strategies for complex rotational dynamics questions</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                      </svg>
+                      <span>Common mistakes and how to avoid them in JEE questions</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Key Takeaways:</h4>
+                  <p class="text-sm text-gray-700">Rahul shared his personal shortcuts for solving rotational motion problems quickly. Focus on understanding the physical concepts before memorizing formulas. Practice 10-15 problems daily to build speed and accuracy.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Performance Insight -->
+          <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-large shadow-custom p-6">
+            <div class="flex items-start gap-4">
+              <div class="bg-purple-100 p-3 rounded-large">
+                <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-heading text-lg font-semibold text-gray-900 mb-2">Performance Insight</h3>
+                <p class="text-gray-700 mb-3">You've completed <span class="font-semibold text-purple-600">5 sessions</span> with Rahul. Your Physics score improved by <span class="font-semibold text-green-600">+18%</span> in the last month!</p>
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                  <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>Keep up the great work!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rating Section -->
+          <div class="bg-white rounded-large shadow-custom p-6">
+            <h3 class="font-heading text-xl font-bold text-gray-900 mb-4">Rate Your Session</h3>
+            <p class="text-gray-600 mb-6">How would you rate your experience with Rahul today?</p>
+            
+            <!-- Star Rating -->
+            <div class="flex items-center justify-center gap-3 mb-8">
+              <button class="text-gray-300 hover:text-yellow-400 transition-colors transform hover:scale-110">
+                <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              </button>
+              <button class="text-gray-300 hover:text-yellow-400 transition-colors transform hover:scale-110">
+                <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              </button>
+              <button class="text-gray-300 hover:text-yellow-400 transition-colors transform hover:scale-110">
+                <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              </button>
+              <button class="text-gray-300 hover:text-yellow-400 transition-colors transform hover:scale-110">
+                <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              </button>
+              <button class="text-yellow-400 transition-colors transform hover:scale-110">
+                <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Quick Tag Reviews -->
+            <div class="mb-6">
+              <h4 class="font-semibold text-gray-900 mb-3">What did you like most?</h4>
+              <div class="flex flex-wrap gap-3">
+                <button class="px-4 py-2 bg-blue-100 text-blue-700 rounded-small font-medium hover:bg-blue-200 transition-colors">
+                  Helpful
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-small font-medium hover:bg-gray-200 transition-colors">
+                  Knowledgeable
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-small font-medium hover:bg-gray-200 transition-colors">
+                  Motivating
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-small font-medium hover:bg-gray-200 transition-colors">
+                  Patient
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-small font-medium hover:bg-gray-200 transition-colors">
+                  Clear Explanations
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-small font-medium hover:bg-gray-200 transition-colors">
+                  Great Examples
+                </button>
+              </div>
+            </div>
+
+            <!-- Written Feedback -->
+            <div class="mb-6">
+              <label class="block font-semibold text-gray-900 mb-2">Additional Feedback (Optional)</label>
+              <textarea placeholder="Share more details about your experience..." class="w-full bg-gray-50 border border-gray-300 rounded-small px-4 py-3 text-sm focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all h-24 resize-none"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button class="w-full bg-blue-600 text-white px-6 py-3 rounded-small font-semibold hover:bg-blue-700 transition-colors shadow-custom">
+              Submit Review
+            </button>
+          </div>
+
+          <!-- Book Again CTA -->
+          <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-large shadow-custom p-6 text-white">
+            <div class="flex items-center justify-between gap-6">
+              <div class="flex-1">
+                <h3 class="font-heading text-xl font-bold mb-2">Book Your Next Session</h3>
+                <p class="text-blue-100 mb-4">Continue your learning journey with Rahul. Schedule your next session now!</p>
+                <button class="bg-white text-blue-600 px-6 py-3 rounded-small font-semibold hover:bg-blue-50 transition-colors shadow-custom">
+                  Book Again with Rahul
+                </button>
+              </div>
+              <div class="hidden md:block">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop" alt="Rahul" class="w-24 h-24 rounded-full border-4 border-white shadow-custom">
+              </div>
+            </div>
+          </div>
+
+          <!-- Refer & Earn -->
+          <div class="bg-white rounded-large shadow-custom p-6 border-2 border-green-200">
+            <div class="flex items-start gap-4">
+              <div class="bg-green-100 p-3 rounded-large">
+                <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-heading text-lg font-semibold text-gray-900 mb-2">Refer a Friend, Earn ₹50 Credit</h3>
+                <p class="text-gray-600 mb-4">Share AmentaX with your friends. When they book their first session, you both get ₹50 credit!</p>
+                <div class="flex gap-3">
+                  <input type="text" value="SNEHA50" readonly class="flex-1 bg-gray-50 border border-gray-300 rounded-small px-4 py-2 text-sm font-mono font-semibold text-gray-900">
+                  <button class="bg-green-600 text-white px-6 py-2 rounded-small font-semibold hover:bg-green-700 transition-colors whitespace-nowrap">
+                    Copy Code
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Follow Mentor Option -->
+          <div class="bg-white rounded-large shadow-custom p-6">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop" alt="Rahul" class="w-12 h-12 rounded-full">
+                <div>
+                  <h4 class="font-semibold text-gray-900">Follow Rahul Sharma</h4>
+                  <p class="text-sm text-gray-600">Get notified when he shares new tips and opens slots</p>
+                </div>
+              </div>
+              <button class="bg-blue-600 text-white px-6 py-2 rounded-small font-semibold hover:bg-blue-700 transition-colors">
+                Follow
+              </button>
+            </div>
+          </div>
+
+          <!-- Navigation Links -->
+          <div class="flex items-center justify-center gap-6 text-sm pt-4">
+            <a href="#dashboard" class="text-blue-600 hover:text-blue-700 font-medium transition-colors">Back to Dashboard</a>
+            <span class="text-gray-300">|</span>
+            <a href="#sessions" class="text-blue-600 hover:text-blue-700 font-medium transition-colors">View All Sessions</a>
+            <span class="text-gray-300">|</span>
+            <a href="#mentors" class="text-blue-600 hover:text-blue-700 font-medium transition-colors">Find More Mentors</a>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>

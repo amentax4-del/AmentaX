@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AX-S8 — Live Session Interface</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link id="heading-font-link" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link id="body-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          spacing: {
+            base: '1rem',
+          },
+          borderRadius: {
+            small: '8px',
+            large: '16px',
+          },
+          boxShadow: {
+            custom: 'var(--shadow-custom)',
+            'custom-hover': 'var(--shadow-custom-hover)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      /* Typography */
+      --font-heading-name: 'Poppins';
+      --font-body-name: 'Inter';
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --letter-spacing-heading: -0.5px;
+      --letter-spacing-body: 0px;
+      
+      /* Spacing */
+      --space-base: 1rem;
+      
+      /* Borders */
+      --radius-small: 8px;
+      --radius-large: 16px;
+      --border-width: 2px;
+      
+      /* Shadows */
+      --shadow-color: 0 0 0;
+      --shadow-offset-x: 0px;
+      --shadow-offset-y: 4px;
+      --shadow-blur: 12px;
+      --shadow-spread: 0px;
+      --shadow-opacity: 0.1;
+      --shadow-custom: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      --shadow-custom-hover: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body class="font-body bg-gray-900 text-white" style="height: auto; min-height: 100%;">
+  
+  <div class="flex flex-col h-screen max-h-screen overflow-hidden">
+    
+    <!-- Top Control Bar -->
+    <header class="bg-gray-800 border-b border-gray-700 px-6 py-3 flex items-center justify-between max-h-[72px]">
+      <div class="flex items-center gap-4">
+        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=120&h=40&fit=crop" alt="AmentaX Logo" class="h-7 opacity-80">
+        <div class="flex items-center gap-2 bg-red-600 px-3 py-1.5 rounded-small">
+          <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+          <span class="text-sm font-semibold">Recording</span>
+        </div>
+        <div class="flex items-center gap-2 text-sm text-gray-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+          </svg>
+          <span class="font-semibold">42:18</span>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-3">
+        <button class="flex items-center gap-2 bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded-small text-sm font-medium transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+          </svg>
+          Distraction-Free Mode
+        </button>
+        
+        <button class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-small text-sm font-semibold transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"/>
+            <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"/>
+          </svg>
+          AI Notes Active
+        </button>
+        
+        <button class="bg-red-600 hover:bg-red-700 px-6 py-2 rounded-small text-sm font-semibold transition-colors">
+          End Session
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Session Area -->
+    <div class="flex flex-1 overflow-hidden max-h-[calc(100vh-144px)]">
+      
+      <!-- Video Grid Area -->
+      <main class="flex-1 bg-gray-900 p-4 overflow-hidden">
+        <div class="h-full grid grid-rows-[1fr_auto] gap-4">
+          
+          <!-- Main Video Display -->
+          <div class="relative bg-gray-800 rounded-large overflow-hidden shadow-custom">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop" alt="Mentor Video" class="w-full h-full object-cover">
+            
+            <!-- Mentor Name Overlay -->
+            <div class="absolute bottom-4 left-4 bg-gray-900 bg-opacity-80 px-4 py-2 rounded-small flex items-center gap-3">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <div>
+                <div class="font-semibold text-sm">Rahul Sharma</div>
+                <div class="text-xs text-gray-300">JEE AIR 47 • Mentor</div>
+              </div>
+            </div>
+            
+            <!-- AI Notes Indicator -->
+            <div class="absolute top-4 right-4 bg-blue-600 bg-opacity-90 px-4 py-2 rounded-small flex items-center gap-2">
+              <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"/>
+                <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"/>
+              </svg>
+              <span class="text-sm font-semibold">AI taking notes...</span>
+            </div>
+            
+            <!-- Screen Share Indicator (if active) -->
+            <div class="absolute top-4 left-4 bg-purple-600 bg-opacity-90 px-4 py-2 rounded-small flex items-center gap-2">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-sm font-semibold">Screen Sharing</span>
+            </div>
+          </div>
+          
+          <!-- Self Video + Controls -->
+          <div class="flex items-center justify-between gap-4">
+            
+            <!-- Self Video Thumbnail -->
+            <div class="relative bg-gray-800 rounded-large overflow-hidden shadow-custom w-48 h-32">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=150&fit=crop" alt="Your Video" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 left-2 bg-gray-900 bg-opacity-80 px-2 py-1 rounded text-xs font-semibold">
+                You
+              </div>
+            </div>
+            
+            <!-- Session Controls -->
+            <div class="flex items-center gap-3">
+              <button class="bg-gray-700 hover:bg-gray-600 p-4 rounded-full transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clip-rule="evenodd"/>
+                </svg>
+              </button>
+              
+              <button class="bg-gray-700 hover:bg-gray-600 p-4 rounded-full transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/>
+                </svg>
+              </button>
+              
+              <button class="bg-yellow-600 hover:bg-yellow-700 p-4 rounded-full transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L11 4.323V3a1 1 0 011-1zm-5.5 9.5A1.5 1.5 0 003 13v2a1.5 1.5 0 003 0v-2a1.5 1.5 0 00-1.5-1.5zM5 16a1 1 0 011-1h1a1 1 0 110 2H6a1 1 0 01-1-1z"/>
+                </svg>
+              </button>
+              
+              <button class="bg-gray-700 hover:bg-gray-600 p-4 rounded-full transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                </svg>
+              </button>
+            </div>
+            
+            <!-- Raise Hand Button -->
+            <button class="bg-orange-600 hover:bg-orange-700 px-6 py-3 rounded-small font-semibold flex items-center gap-2 transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L11 4.323V3a1 1 0 011-1zm-5.5 9.5A1.5 1.5 0 003 13v2a1.5 1.5 0 003 0v-2a1.5 1.5 0 00-1.5-1.5zM5 16a1 1 0 011-1h1a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd"/>
+              </svg>
+              Raise Hand
+            </button>
+          </div>
+          
+        </div>
+      </main>
+
+      <!-- Chat Sidebar -->
+      <aside class="w-80 bg-gray-800 border-l border-gray-700 flex flex-col max-h-[calc(100vh-144px)]">
+        
+        <!-- Chat Header -->
+        <div class="px-4 py-3 border-b border-gray-700 flex items-center justify-between">
+          <h3 class="font-heading font-semibold text-lg">Session Chat</h3>
+          <button class="text-gray-400 hover:text-white transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Chat Restriction Notice -->
+        <div class="px-4 py-3 bg-yellow-900 bg-opacity-30 border-b border-yellow-700 text-sm">
+          <div class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+            </svg>
+            <div>
+              <div class="font-semibold text-yellow-300 mb-1">Chat Guidelines</div>
+              <div class="text-gray-300 text-xs">Keep messages relevant to the session. Inappropriate content will be flagged.</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Chat Messages -->
+        <div class="flex-1 overflow-y-auto p-4 space-y-4">
+          
+          <!-- System Message -->
+          <div class="text-center">
+            <div class="inline-block bg-gray-700 px-3 py-1 rounded-small text-xs text-gray-300">
+              Session started at 4:00 PM
+            </div>
+          </div>
+          
+          <!-- Mentor Message -->
+          <div class="flex gap-3">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop" alt="Rahul" class="w-8 h-8 rounded-full flex-shrink-0">
+            <div class="flex-1">
+              <div class="flex items-baseline gap-2 mb-1">
+                <span class="font-semibold text-sm">Rahul Sharma</span>
+                <span class="text-xs text-gray-400">4:02 PM</span>
+              </div>
+              <div class="bg-gray-700 rounded-large rounded-tl-none px-3 py-2 text-sm">
+                Hi Sneha! Ready to dive into Physics concepts today? Let me know if you have any specific topics you want to cover.
+              </div>
+            </div>
+          </div>
+          
+          <!-- Student Message -->
+          <div class="flex gap-3 flex-row-reverse">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop" alt="You" class="w-8 h-8 rounded-full flex-shrink-0">
+            <div class="flex-1 text-right">
+              <div class="flex items-baseline gap-2 mb-1 justify-end">
+                <span class="text-xs text-gray-400">4:03 PM</span>
+                <span class="font-semibold text-sm">You</span>
+              </div>
+              <div class="bg-blue-600 rounded-large rounded-tr-none px-3 py-2 text-sm inline-block text-left">
+                Yes! I'm struggling with rotational motion problems. Can we focus on that?
+              </div>
+            </div>
+          </div>
+          
+          <!-- Mentor Message -->
+          <div class="flex gap-3">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop" alt="Rahul" class="w-8 h-8 rounded-full flex-shrink-0">
+            <div class="flex-1">
+              <div class="flex items-baseline gap-2 mb-1">
+                <span class="font-semibold text-sm">Rahul Sharma</span>
+                <span class="text-xs text-gray-400">4:04 PM</span>
+              </div>
+              <div class="bg-gray-700 rounded-large rounded-tl-none px-3 py-2 text-sm">
+                Perfect! Rotational motion is tricky but once you understand the fundamentals, it becomes much easier. Let me share my screen and we'll go through some key concepts.
+              </div>
+            </div>
+          </div>
+          
+          <!-- AI Note -->
+          <div class="bg-blue-900 bg-opacity-30 border border-blue-700 rounded-large p-3">
+            <div class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"/>
+                <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"/>
+              </svg>
+              <div class="flex-1">
+                <div class="font-semibold text-blue-300 text-xs mb-1">AI Note</div>
+                <div class="text-gray-300 text-xs">Topic: Rotational Motion - Fundamentals and problem-solving strategies</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Student Message -->
+          <div class="flex gap-3 flex-row-reverse">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop" alt="You" class="w-8 h-8 rounded-full flex-shrink-0">
+            <div class="flex-1 text-right">
+              <div class="flex items-baseline gap-2 mb-1 justify-end">
+                <span class="text-xs text-gray-400">4:06 PM</span>
+                <span class="font-semibold text-sm">You</span>
+              </div>
+              <div class="bg-blue-600 rounded-large rounded-tr-none px-3 py-2 text-sm inline-block text-left">
+                Great! I have my notes ready.
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Chat Input -->
+        <div class="p-4 border-t border-gray-700">
+          <div class="flex gap-2">
+            <input type="text" placeholder="Type your message..." class="flex-1 bg-gray-700 border border-gray-600 rounded-small px-4 py-2 text-sm focus:outline-none focus:border-blue-600 transition-colors">
+            <button class="bg-blue-600 hover:bg-blue-700 p-2 rounded-small transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="text-xs text-gray-400 mt-2">Press Enter to send</div>
+        </div>
+        
+      </aside>
+      
+    </div>
+
+    <!-- Bottom Status Bar -->
+    <footer class="bg-gray-800 border-t border-gray-700 px-6 py-3 flex items-center justify-between max-h-[72px]">
+      <div class="flex items-center gap-6 text-sm text-gray-300">
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+          <span>Connection: Excellent</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/>
+          </svg>
+          <span>1080p HD</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"/>
+            <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"/>
+          </svg>
+          <span>AI Notes: 12 key points captured</span>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-4">
+        <a href="#dashboard" class="text-sm text-gray-400 hover:text-white transition-colors">Back to Dashboard</a>
+        <button class="text-sm text-blue-400 hover:text-blue-300 transition-colors">Report Issue</button>
+      </div>
+    </footer>
+    
+  </div>
+
+  <!-- Pre-Exit Rating Modal (Hidden by default, shown when user clicks End Session) -->
+  <div class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+    <div class="bg-gray-800 rounded-large shadow-custom max-w-md w-full p-6">
+      <h3 class="font-heading text-2xl font-bold text-white mb-4">Rate Your Session</h3>
+      <p class="text-gray-300 mb-6">How was your experience with Rahul today?</p>
+      
+      <!-- Star Rating -->
+      <div class="flex items-center justify-center gap-2 mb-6">
+        <button class="text-gray-400 hover:text-yellow-400 transition-colors">
+          <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+        </button>
+        <button class="text-gray-400 hover:text-yellow-400 transition-colors">
+          <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+        </button>
+        <button class="text-gray-400 hover:text-yellow-400 transition-colors">
+          <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+        </button>
+        <button class="text-gray-400 hover:text-yellow-400 transition-colors">
+          <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+        </button>
+        <button class="text-gray-400 hover:text-yellow-400 transition-colors">
+          <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Feedback Text -->
+      <textarea placeholder="Share your feedback (optional)" class="w-full bg-gray-700 border border-gray-600 rounded-small px-4 py-3 text-sm focus:outline-none focus:border-blue-600 transition-colors mb-6 h-24 resize-none"></textarea>
+      
+      <!-- Action Buttons -->
+      <div class="flex gap-3">
+        <button class="flex-1 bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-small font-semibold transition-colors">
+          Skip
+        </button>
+        <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-small font-semibold transition-colors">
+          Submit & End
+        </button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
