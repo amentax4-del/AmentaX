@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AX-A10 — System Settings</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link id="heading-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link id="body-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Inter', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          spacing: {
+            base: '1rem',
+          },
+          borderRadius: {
+            small: '0.5rem',
+            large: '0.75rem',
+          },
+          boxShadow: {
+            custom: 'var(--shadow-custom)',
+            'custom-hover': 'var(--shadow-custom-hover)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      /* Typography */
+      --font-heading-name: 'Inter';
+      --font-body-name: 'Inter';
+      --font-heading: 'Inter', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --letter-spacing-heading: -0.02em;
+      --letter-spacing-body: 0em;
+      
+      /* Spacing */
+      --space-base: 1rem;
+      
+      /* Borders */
+      --radius-small: 0.5rem;
+      --radius-large: 0.75rem;
+      --border-width: 1px;
+      
+      /* Shadows */
+      --shadow-color: 0 0 0;
+      --shadow-offset-x: 0px;
+      --shadow-offset-y: 1px;
+      --shadow-blur: 3px;
+      --shadow-spread: 0px;
+      --shadow-opacity: 0.1;
+      --shadow-custom: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+      --shadow-custom-hover: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+  </style>
+</head>
+<body class="font-body bg-gray-50" style="height: auto; min-height: 100%;">
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
+      <div class="p-6 border-b border-gray-200">
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1633409361618-c73427e4e206?w=40&h=40&fit=crop" alt="Logo" class="w-10 h-10 rounded-small">
+          <div>
+            <h1 class="font-heading text-lg font-bold text-gray-900">AdminX</h1>
+            <p class="text-xs text-gray-500">Platform Control</p>
+          </div>
+        </div>
+      </div>
+      
+      <nav class="flex-1 p-4 space-y-1">
+        <a href="#dashboard" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="#mentors" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
+          <span>Mentors</span>
+        </a>
+        <a href="#support" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <span>Support</span>
+        </a>
+        <a href="#fraud" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+          </svg>
+          <span>Fraud Detection</span>
+        </a>
+        <a href="#revenue" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Revenue Control</span>
+        </a>
+        <a href="#analytics" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+          </svg>
+          <span>Analytics</span>
+        </a>
+        <a href="#leaderboard" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+          </svg>
+          <span>Leaderboard</span>
+        </a>
+        <a href="#moderation" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+          <span>Moderation</span>
+        </a>
+        <a href="#experiments" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+          </svg>
+          <span>Experiments</span>
+        </a>
+        <a href="#settings" class="flex items-center gap-3 px-3 py-2 bg-blue-50 text-blue-600 rounded-small font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+      
+      <div class="p-4 border-t border-gray-200">
+        <div class="flex items-center gap-3 px-3 py-2">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop" alt="Admin" class="w-10 h-10 rounded-full">
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-gray-900 truncate">John Admin</p>
+            <p class="text-xs text-gray-500 truncate">admin@adminx.com</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <div class="max-h-[2400px] overflow-auto">
+        <!-- Header -->
+        <header class="bg-white border-b border-gray-200 px-8 py-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <h1 class="font-heading text-3xl font-bold text-gray-900">System Settings</h1>
+              <p class="text-gray-600 mt-1">Operational control center for platform configuration and security</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <button class="px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-small border border-gray-300 font-medium flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+                Reset to Defaults
+              </button>
+              <button class="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-small font-medium shadow-custom flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Save All Changes
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="p-8 space-y-6">
+          <!-- Quick Settings Overview -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-small flex items-center justify-center">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                  </svg>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" checked class="sr-only peer">
+                  <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                </label>
+              </div>
+              <h3 class="font-heading text-lg font-semibold text-gray-900">2FA Enabled</h3>
+              <p class="text-sm text-gray-600 mt-1">Two-factor authentication</p>
+              <p class="text-xs text-gray-500 mt-2">847 admins enrolled</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-purple-100 rounded-small flex items-center justify-center">
+                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                  </svg>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" class="sr-only peer">
+                  <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                </label>
+              </div>
+              <h3 class="font-heading text-lg font-semibold text-gray-900">Dark Mode</h3>
+              <p class="text-sm text-gray-600 mt-1">System appearance</p>
+              <p class="text-xs text-gray-500 mt-2">Currently: Light</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-green-100 rounded-small flex items-center justify-center">
+                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                </div>
+                <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-small">Active</span>
+              </div>
+              <h3 class="font-heading text-lg font-semibold text-gray-900">IP Tracking</h3>
+              <p class="text-sm text-gray-600 mt-1">Security monitoring</p>
+              <p class="text-xs text-gray-500 mt-2">284 IPs tracked</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-amber-100 rounded-small flex items-center justify-center">
+                  <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                  </svg>
+                </div>
+                <span class="text-xs font-medium text-amber-600 bg-amber-50 px-2 py-1 rounded-small">12 New</span>
+              </div>
+              <h3 class="font-heading text-lg font-semibold text-gray-900">Notifications</h3>
+              <p class="text-sm text-gray-600 mt-1">System alerts</p>
+              <p class="text-xs text-gray-500 mt-2">12 unread alerts</p>
+            </div>
+          </div>
+
+          <!-- Payment Gateway Integration -->
+          <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h2 class="font-heading text-xl font-bold text-gray-900">Payment Gateway Integration</h2>
+                <p class="text-sm text-gray-600 mt-1">Configure payment processors and payout cycles</p>
+              </div>
+              <button class="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-small font-medium shadow-custom">
+                Add Gateway
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div class="border border-green-200 rounded-large p-5 bg-green-50">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-white rounded-small flex items-center justify-center shadow-custom">
+                      <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=40&h=40&fit=crop" alt="Razorpay" class="w-8 h-8 rounded-small">
+                    </div>
+                    <div>
+                      <h3 class="font-heading text-lg font-semibold text-gray-900">Razorpay</h3>
+                      <p class="text-xs text-green-700">Primary Gateway</p>
+                    </div>
+                  </div>
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" checked class="sr-only peer">
+                    <div class="w-11 h-6 bg-green-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                  </label>
+                </div>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">API Key</span>
+                    <span class="font-mono text-xs text-gray-900">rzp_live_***********</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Transaction Fee</span>
+                    <span class="font-semibold text-gray-900">2.0% + ₹3</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Settlement Cycle</span>
+                    <span class="font-semibold text-gray-900">T+2 days</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Success Rate</span>
+                    <span class="font-semibold text-green-600">98.4%</span>
+                  </div>
+                </div>
+                <button class="w-full mt-4 px-3 py-2 text-green-700 hover:bg-green-100 rounded-small text-sm font-medium border border-green-300">
+                  Configure Settings
+                </button>
+              </div>
+
+              <div class="border border-blue-200 rounded-large p-5 bg-blue-50">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-white rounded-small flex items-center justify-center shadow-custom">
+                      <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?w=40&h=40&fit=crop" alt="Stripe" class="w-8 h-8 rounded-small">
+                    </div>
+                    <div>
+                      <h3 class="font-heading text-lg font-semibold text-gray-900">Stripe</h3>
+                      <p class="text-xs text-blue-700">International Gateway</p>
+                    </div>
+                  </div>
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" checked class="sr-only peer">
+                    <div class="w-11 h-6 bg-blue-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                  </label>
+                </div>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">API Key</span>
+                    <span class="font-mono text-xs text-gray-900">sk_live_***********</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Transaction Fee</span>
+                    <span class="font-semibold text-gray-900">2.9% + $0.30</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Settlement Cycle</span>
+                    <span class="font-semibold text-gray-900">T+7 days</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Success Rate</span>
+                    <span class="font-semibold text-blue-600">97.8%</span>
+                  </div>
+                </div>
+                <button class="w-full mt-4 px-3 py-2 text-blue-700 hover:bg-blue-100 rounded-small text-sm font-medium border border-blue-300">
+                  Configure Settings
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-gray-50 rounded-large border border-gray-200">
+              <h3 class="font-heading text-sm font-semibold text-gray-900 mb-3">UPI Priority Settings</h3>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Primary UPI</span>
+                  <select class="text-sm border border-gray-300 rounded-small px-3 py-1.5 text-gray-700">
+                    <option>Razorpay UPI</option>
+                    <option>PhonePe</option>
+                    <option>Google Pay</option>
+                  </select>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Fallback UPI</span>
+                  <select class="text-sm border border-gray-300 rounded-small px-3 py-1.5 text-gray-700">
+                    <option>PhonePe</option>
+                    <option>Razorpay UPI</option>
+                    <option>Google Pay</option>
+                  </select>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Auto-retry</span>
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" checked class="sr-only peer">
+                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payout Cycle Control & Notification Templates -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Payout Cycle Control -->
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h2 class="font-heading text-lg font-semibold text-gray-900">Payout Cycle Control</h2>
+                  <p class="text-sm text-gray-600 mt-1">Configure mentor payout schedules</p>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <div class="p-4 bg-blue-50 border border-blue-200 rounded-large">
+                  <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-heading text-sm font-semibold text-gray-900">Standard Payout</h3>
+                    <span class="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-small">Active</span>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-700">Frequency</span>
+                      <select class="text-sm border border-gray-300 rounded-small px-3 py-1.5 text-gray-700">
+                        <option>Weekly</option>
+                        <option>Bi-weekly</option>
+                        <option>Monthly</option>
+                      </select>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-700">Minimum Threshold</span>
+                      <input type="text" value="₹1,000" class="text-sm border border-gray-300 rounded-small px-3 py-1.5 text-gray-700 w-32 text-right">
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-700">Processing Day</span>
+                      <select class="text-sm border border-gray-300 rounded-small px-3 py-1.5 text-gray-700">
+                        <option>Monday</option>
+                        <option>Tuesday</option>
+                        <option>Wednesday</option>
+                        <option>Thursday</option>
+                        <option>Friday</option>
+                      </select>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-700">Auto-approve</span>
+                      <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" checked class="sr-only peer">
+                        <div class="w-11 h-6 bg-blue-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-4 bg-purple-50 border border-purple-200 rounded-large">
+                  <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-heading text-sm font-semibold text-gray-900">Premium Payout</h3>
+                    <span class="text-xs font-medium text-purple-600 bg-purple-100 px-2 py-1 rounded-small">VIP</span>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-700">Frequency</span>
+                      <select class="text-sm border border-gray-300 rounded-small px-3 py-1.5 text-gray-700">
+                        <option>Daily</option>
+                        <option>Weekly</option>
+                        <option>Bi-weekly</option>
+                      </select>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-700">Minimum Threshold</span>
+                      <input type="text" value="₹500" class="text-sm border border-gray-300 rounded-small px-3 py-1.5 text-gray-700 w-32 text-right">
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-700">Priority Processing</span>
+                      <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" checked class="sr-only peer">
+                        <div class="w-11 h-6 bg-purple-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-4 bg-gray-50 border border-gray-200 rounded-large">
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Next Payout Run</span>
+                    <span class="font-semibold text-gray-900">Monday, 9:00 AM</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm mt-2">
+                    <span class="text-gray-700">Pending Payouts</span>
+                    <span class="font-semibold text-gray-900">847 mentors</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm mt-2">
+                    <span class="text-gray-700">Total Amount</span>
+                    <span class="font-semibold text-green-600">₹12,84,730</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notification & Email Templates -->
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h2 class="font-heading text-lg font-semibold text-gray-900">Notification Templates</h2>
+                  <p class="text-sm text-gray-600 mt-1">Manage email and push notification templates</p>
+                </div>
+                <button class="px-3 py-1.5 bg-blue-600 text-white hover:bg-blue-700 rounded-small text-sm font-medium">
+                  New Template
+                </button>
+              </div>
+
+              <div class="space-y-3">
+                <div class="p-4 border border-gray-200 rounded-large hover:border-blue-300 cursor-pointer transition-colors">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-heading text-sm font-semibold text-gray-900">Session Confirmation</h3>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-small">Active</span>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2">Sent when a session is booked successfully</p>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-gray-500">Email + Push</span>
+                    <span class="text-xs text-gray-500">•</span>
+                    <span class="text-xs text-gray-500">12,847 sent today</span>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-gray-200 rounded-large hover:border-blue-300 cursor-pointer transition-colors">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-heading text-sm font-semibold text-gray-900">Payment Receipt</h3>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-small">Active</span>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2">Sent after successful payment processing</p>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-gray-500">Email only</span>
+                    <span class="text-xs text-gray-500">•</span>
+                    <span class="text-xs text-gray-500">8,423 sent today</span>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-gray-200 rounded-large hover:border-blue-300 cursor-pointer transition-colors">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-heading text-sm font-semibold text-gray-900">Session Reminder</h3>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-small">Active</span>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2">Sent 1 hour before scheduled session</p>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-gray-500">Email + Push + SMS</span>
+                    <span class="text-xs text-gray-500">•</span>
+                    <span class="text-xs text-gray-500">4,283 sent today</span>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-gray-200 rounded-large hover:border-blue-300 cursor-pointer transition-colors">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-heading text-sm font-semibold text-gray-900">Refund Processed</h3>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-small">Active</span>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2">Sent when refund is successfully processed</p>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-gray-500">Email + Push</span>
+                    <span class="text-xs text-gray-500">•</span>
+                    <span class="text-xs text-gray-500">142 sent today</span>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-gray-200 rounded-large hover:border-blue-300 cursor-pointer transition-colors">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-heading text-sm font-semibold text-gray-900">Payout Notification</h3>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-small">Active</span>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2">Sent to mentors when payout is initiated</p>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-gray-500">Email only</span>
+                    <span class="text-xs text-gray-500">•</span>
+                    <span class="text-xs text-gray-500">847 sent weekly</span>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-amber-200 rounded-large bg-amber-50">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-heading text-sm font-semibold text-gray-900">Fraud Alert</h3>
+                    <span class="text-xs font-medium text-amber-600 bg-amber-100 px-2 py-1 rounded-small">Draft</span>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2">Sent to admins when fraud is detected</p>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-gray-500">Email + SMS</span>
+                    <span class="text-xs text-gray-500">•</span>
+                    <span class="text-xs text-gray-500">Not deployed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Refund Policy Editor & Terms & Conditions -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Refund Policy Editor -->
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h2 class="font-heading text-lg font-semibold text-gray-900">Refund Policy Editor</h2>
+                  <p class="text-sm text-gray-600 mt-1">Configure refund rules and conditions</p>
+                </div>
+                <button class="px-3 py-1.5 bg-blue-600 text-white hover:bg-blue-700 rounded-small text-sm font-medium">
+                  Save Policy
+                </button>
+              </div>
+
+              <div class="space-y-4">
+                <div class="p-4 bg-gray-50 border border-gray-200 rounded-large">
+                  <h3 class="font-heading text-sm font-semibold text-gray-900 mb-3">Refund Eligibility</h3>
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-gray-700">Full refund window</span>
+                      <div class="flex items-center gap-2">
+                        <input type="number" value="24" class="text-sm border border-gray-300 rounded-small px-3 py-1.5 text-gray-700 w-20 text-right">
+                        <span class="text-sm text-gray-700">hours</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-gray-700">Partial refund window</span>
+                      <div class="flex items-center gap-2">
+                        <input type="number" value="48" class="text-sm border border-gray-300 rounded-small px-3 py-1.5 text-gray-700 w-20 text-right">
+                        <span class="text-sm text-gray-700">hours</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-gray-700">Partial refund %</span>
+                      <div class="flex items-center gap-2">
+                        <input type="number" value="50" class="text-sm border border-gray-300 rounded-small px-3 py-1.5 text-gray-700 w-20 text-right">
+                        <span class="text-sm text-gray-700">%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-4 bg-gray-50 border border-gray-200 rounded-large">
+                  <h3 class="font-heading text-sm font-semibold text-gray-900 mb-3">Auto-approval Rules</h3>
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-gray-700">Auto-approve under</span>
+                      <div class="flex items-center gap-2">
+                        <input type="text" value="₹5,000" class="text-sm border border-gray-300 rounded-small px-3 py-1.5 text-gray-700 w-28 text-right">
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-gray-700">Manual review above</span>
+                      <div class="flex items-center gap-2">
+                        <input type="text" value="₹5,000" class="text-sm border border-gray-300 rounded-small px-3 py-1.5 text-gray-700 w-28 text-right">
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-gray-700">Processing time</span>
+                      <div class="flex items-center gap-2">
+                        <input type="number" value="5" class="text-sm border border-gray-300 rounded-small px-3 py-1.5 text-gray-700 w-20 text-right">
+                        <span class="text-sm text-gray-700">days</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-4 bg-gray-50 border border-gray-200 rounded-large">
+                  <h3 class="font-heading text-sm font-semibold text-gray-900 mb-3">Exceptions</h3>
+                  <div class="space-y-2">
+                    <label class="flex items-center gap-2">
+                      <input type="checkbox" checked class="w-4 h-4 text-blue-600 border-gray-300 rounded">
+                      <span class="text-sm text-gray-700">No refund for completed sessions</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                      <input type="checkbox" checked class="w-4 h-4 text-blue-600 border-gray-300 rounded">
+                      <span class="text-sm text-gray-700">No refund for no-shows</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                      <input type="checkbox" class="w-4 h-4 text-blue-600 border-gray-300 rounded">
+                      <span class="text-sm text-gray-700">Allow refund for technical issues</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                      <input type="checkbox" checked class="w-4 h-4 text-blue-600 border-gray-300 rounded">
+                      <span class="text-sm text-gray-700">Deduct platform fee from refund</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Terms & Conditions Editor -->
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h2 class="font-heading text-lg font-semibold text-gray-900">Terms & Conditions</h2>
+                  <p class="text-sm text-gray-600 mt-1">Manage legal documents and policies</p>
+                </div>
+                <button class="px-3 py-1.5 bg-blue-600 text-white hover:bg-blue-700 rounded-small text-sm font-medium">
+                  Publish
+                </button>
+              </div>
+
+              <div class="space-y-3">
+                <div class="p-4 border border-gray-200 rounded-large hover:border-blue-300 cursor-pointer transition-colors">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-heading text-sm font-semibold text-gray-900">Terms of Service</h3>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-small">Published</span>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2">Last updated: Jan 15, 2024</p>
+                  <div class="flex items-center gap-2">
+                    <button class="text-xs text-blue-600 hover:text-blue-700 font-medium">Edit</button>
+                    <span class="text-xs text-gray-400">•</span>
+                    <button class="text-xs text-blue-600 hover:text-blue-700 font-medium">View History</button>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-gray-200 rounded-large hover:border-blue-300 cursor-pointer transition-colors">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-heading text-sm font-semibold text-gray-900">Privacy Policy</h3>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-small">Published</span>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2">Last updated: Jan 10, 2024</p>
+                  <div class="flex items-center gap-2">
+                    <button class="text-xs text-blue-600 hover:text-blue-700 font-medium">Edit</button>
+                    <span class="text-xs text-gray-400">•</span>
+                    <button class="text-xs text-blue-600 hover:text-blue-700 font-medium">View History</button>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-gray-200 rounded-large hover:border-blue-300 cursor-pointer transition-colors">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-heading text-sm font-semibold text-gray-900">Cookie Policy</h3>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-small">Published</span>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2">Last updated: Dec 28, 2023</p>
+                  <div class="flex items-center gap-2">
+                    <button class="text-xs text-blue-600 hover:text-blue-700 font-medium">Edit</button>
+                    <span class="text-xs text-gray-400">•</span>
+                    <button class="text-xs text-blue-600 hover:text-blue-700 font-medium">View History</button>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-amber-200 rounded-large bg-amber-50">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-heading text-sm font-semibold text-gray-900">Mentor Agreement</h3>
+                    <span class="text-xs font-medium text-amber-600 bg-amber-100 px-2 py-1 rounded-small">Draft</span>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2">Created: Jan 20, 2024</p>
+                  <div class="flex items-center gap-2">
+                    <button class="text-xs text-amber-600 hover:text-amber-700 font-medium">Edit</button>
+                    <span class="text-xs text-gray-400">•</span>
+                    <button class="text-xs text-amber-600 hover:text-amber-700 font-medium">Preview</button>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-gray-200 rounded-large hover:border-blue-300 cursor-pointer transition-colors">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-heading text-sm font-semibold text-gray-900">Refund Policy</h3>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-small">Published</span>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2">Last updated: Jan 18, 2024</p>
+                  <div class="flex items-center gap-2">
+                    <button class="text-xs text-blue-600 hover:text-blue-700 font-medium">Edit</button>
+                    <span class="text-xs text-gray-400">•</span>
+                    <button class="text-xs text-blue-600 hover:text-blue-700 font-medium">View History</button>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-gray-200 rounded-large hover:border-blue-300 cursor-pointer transition-colors">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-heading text-sm font-semibold text-gray-900">Community Guidelines</h3>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-small">Published</span>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2">Last updated: Jan 5, 2024</p>
+                  <div class="flex items-center gap-2">
+                    <button class="text-xs text-blue-600 hover:text-blue-700 font-medium">Edit</button>
+                    <span class="text-xs text-gray-400">•</span>
+                    <button class="text-xs text-blue-600 hover:text-blue-700 font-medium">View History</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Role-Based Access Control -->
+          <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h2 class="font-heading text-xl font-bold text-gray-900">Role-Based Access Control</h2>
+                <p class="text-sm text-gray-600 mt-1">Manage admin roles and permissions across the platform</p>
+              </div>
+              <button class="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-small font-medium shadow-custom">
+                Add Role
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="border border-red-200 rounded-large p-5 bg-red-50">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-12 h-12 bg-red-100 rounded-small flex items-center justify-center">
+                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-medium text-red-600 bg-red-100 px-2 py-1 rounded-small">3 Users</span>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-gray-900 mb-2">Super Admin</h3>
+                <p class="text-sm text-gray-700 mb-4">Full platform access and control</p>
+                <div class="space-y-2 mb-4">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">All permissions</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">User management</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">System settings</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">Financial access</span>
+                  </div>
+                </div>
+                <button class="w-full px-3 py-2 text-red-700 hover:bg-red-100 rounded-small text-sm font-medium border border-red-300">
+                  Manage Permissions
+                </button>
+              </div>
+
+              <div class="border border-green-200 rounded-large p-5 bg-green-50">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-12 h-12 bg-green-100 rounded-small flex items-center justify-center">
+                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-small">5 Users</span>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-gray-900 mb-2">Finance Admin</h3>
+                <p class="text-sm text-gray-700 mb-4">Revenue, payouts, and financial operations</p>
+                <div class="space-y-2 mb-4">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">Revenue reports</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">Payout management</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">Refund approval</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">No user management</span>
+                  </div>
+                </div>
+                <button class="w-full px-3 py-2 text-green-700 hover:bg-green-100 rounded-small text-sm font-medium border border-green-300">
+                  Manage Permissions
+                </button>
+              </div>
+
+              <div class="border border-blue-200 rounded-large p-5 bg-blue-50">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-12 h-12 bg-blue-100 rounded-small flex items-center justify-center">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-small">8 Users</span>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-gray-900 mb-2">Support Admin</h3>
+                <p class="text-sm text-gray-700 mb-4">Customer support and dispute resolution</p>
+                <div class="space-y-2 mb-4">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">Ticket management</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">Dispute resolution</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">User communication</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">No financial access</span>
+                  </div>
+                </div>
+                <button class="w-full px-3 py-2 text-blue-700 hover:bg-blue-100 rounded-small text-sm font-medium border border-blue-300">
+                  Manage Permissions
+                </button>
+              </div>
+
+              <div class="border border-purple-200 rounded-large p-5 bg-purple-50">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-12 h-12 bg-purple-100 rounded-small flex items-center justify-center">
+                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-medium text-purple-600 bg-purple-100 px-2 py-1 rounded-small">4 Users</span>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-gray-900 mb-2">Verification Admin</h3>
+                <p class="text-sm text-gray-700 mb-4">Mentor verification and approval</p>
+                <div class="space-y-2 mb-4">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">Mentor verification</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">Document review</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">Profile approval</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">No analytics access</span>
+                  </div>
+                </div>
+                <button class="w-full px-3 py-2 text-purple-700 hover:bg-purple-100 rounded-small text-sm font-medium border border-purple-300">
+                  Manage Permissions
+                </button>
+              </div>
+
+              <div class="border border-amber-200 rounded-large p-5 bg-amber-50">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-12 h-12 bg-amber-100 rounded-small flex items-center justify-center">
+                    <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-medium text-amber-600 bg-amber-100 px-2 py-1 rounded-small">6 Users</span>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-gray-900 mb-2">Growth Admin</h3>
+                <p class="text-sm text-gray-700 mb-4">Marketing campaigns and experiments</p>
+                <div class="space-y-2 mb-4">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">Campaign management</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">A/B testing</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">Analytics access</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">No financial access</span>
+                  </div>
+                </div>
+                <button class="w-full px-3 py-2 text-amber-700 hover:bg-amber-100 rounded-small text-sm font-medium border border-amber-300">
+                  Manage Permissions
+                </button>
+              </div>
+
+              <div class="border border-gray-200 rounded-large p-5 bg-gray-50">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-12 h-12 bg-gray-100 rounded-small flex items-center justify-center">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-medium text-gray-600 bg-gray-200 px-2 py-1 rounded-small">12 Users</span>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-gray-900 mb-2">Read-Only Admin</h3>
+                <p class="text-sm text-gray-700 mb-4">View-only access to all data</p>
+                <div class="space-y-2 mb-4">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">View all reports</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">Export data</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">No edit permissions</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                    <span class="text-xs text-gray-700">No approval rights</span>
+                  </div>
+                </div>
+                <button class="w-full px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-small text-sm font-medium border border-gray-300">
+                  Manage Permissions
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security Features & Login Activity -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Security Features -->
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h2 class="font-heading text-lg font-semibold text-gray-900">Security Features</h2>
+                  <p class="text-sm text-gray-600 mt-1">Two-factor authentication and security settings</p>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <div class="p-4 bg-green-50 border border-green-200 rounded-large">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-green-100 rounded-small flex items-center justify-center">
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                      </div>
+                      <div>
+                        <h3 class="font-heading text-sm font-semibold text-gray-900">Two-Factor Authentication</h3>
+                        <p class="text-xs text-green-700">Enabled for all admins</p>
+                      </div>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" checked class="sr-only peer">
+                      <div class="w-11 h-6 bg-green-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                    </label>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-700">Enrolled Users</span>
+                      <span class="font-semibold text-gray-900">847 / 847</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-700">Method</span>
+                      <span class="font-semibold text-gray-900">Authenticator App</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-4 bg-blue-50 border border-blue-200 rounded-large">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-blue-100 rounded-small flex items-center justify-center">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                        </svg>
+                      </div>
+                      <div>
+                        <h3 class="font-heading text-sm font-semibold text-gray-900">IP Tracking & Whitelisting</h3>
+                        <p class="text-xs text-blue-700">Monitor and restrict access by IP</p>
+                      </div>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" checked class="sr-only peer">
+                      <div class="w-11 h-6 bg-blue-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-700">Tracked IPs</span>
+                      <span class="font-semibold text-gray-900">284</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-700">Whitelisted IPs</span>
+                      <span class="font-semibold text-gray-900">12</span>
+                    </div>
+                  </div>
+                  <button class="w-full mt-3 px-3 py-2 text-blue-700 hover:bg-blue-100 rounded-small text-sm font-medium border border-blue-300">
+                    Manage IP Whitelist
+                  </button>
+                </div>
+
+                <div class="p-4 bg-purple-50 border border-purple-200 rounded-large">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-purple-100 rounded-small flex items-center justify-center">
+                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                      </div>
+                      <div>
+                        <h3 class="font-heading text-sm font-semibold text-gray-900">Session Timeout</h3>
+                        <p class="text-xs text-purple-700">Auto-logout after inactivity</p>
+                      </div>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" checked class="sr-only peer">
+                      <div class="w-11 h-6 bg-purple-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                    </label>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-gray-700">Timeout Duration</span>
+                      <select class="text-sm border border-gray-300 rounded-small px-3 py-1.5 text-gray-700">
+                        <option>15 minutes</option>
+                        <option>30 minutes</option>
+                        <option>1 hour</option>
+                        <option>2 hours</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-4 bg-amber-50 border border-amber-200 rounded-large">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-amber-100 rounded-small flex items-center justify-center">
+                        <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
+                        </svg>
+                      </div>
+                      <div>
+                        <h3 class="font-heading text-sm font-semibold text-gray-900">Password Policy</h3>
+                        <p class="text-xs text-amber-700">Enforce strong password requirements</p>
+                      </div>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" checked class="sr-only peer">
+                      <div class="w-11 h-6 bg-amber-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-600"></div>
+                    </label>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-xs text-gray-700">Min 12 characters</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-xs text-gray-700">Uppercase + lowercase required</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-xs text-gray-700">Numbers + special characters</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Login Activity Logs -->
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h2 class="font-heading text-lg font-semibold text-gray-900">Login Activity Logs</h2>
+                  <p class="text-sm text-gray-600 mt-1">Recent admin login attempts and sessions</p>
+                </div>
+                <button class="px-3 py-1.5 text-gray-700 hover:bg-gray-50 rounded-small text-sm font-medium border border-gray-300">
+                  Export Logs
+                </button>
+              </div>
+
+              <div class="space-y-3">
+                <div class="p-4 border border-green-200 rounded-large bg-green-50">
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between mb-1">
+                        <h3 class="font-heading text-sm font-semibold text-gray-900">John Admin</h3>
+                        <span class="text-xs text-green-700">2 min ago</span>
+                      </div>
+                      <p class="text-xs text-gray-700 mb-1">Successful login from 192.168.1.100</p>
+                      <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span>Chrome 120.0 • Windows 11</span>
+                        <span>•</span>
+                        <span>Mumbai, India</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-green-200 rounded-large bg-green-50">
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between mb-1">
+                        <h3 class="font-heading text-sm font-semibold text-gray-900">Sarah Finance</h3>
+                        <span class="text-xs text-green-700">15 min ago</span>
+                      </div>
+                      <p class="text-xs text-gray-700 mb-1">Successful login from 192.168.1.105</p>
+                      <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span>Safari 17.2 • macOS Sonoma</span>
+                        <span>•</span>
+                        <span>Bangalore, India</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-red-200 rounded-large bg-red-50">
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between mb-1">
+                        <h3 class="font-heading text-sm font-semibold text-gray-900">Unknown User</h3>
+                        <span class="text-xs text-red-700">1 hour ago</span>
+                      </div>
+                      <p class="text-xs text-gray-700 mb-1">Failed login attempt from 203.45.67.89</p>
+                      <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span>Chrome 119.0 • Windows 10</span>
+                        <span>•</span>
+                        <span>Unknown Location</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-green-200 rounded-large bg-green-50">
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between mb-1">
+                        <h3 class="font-heading text-sm font-semibold text-gray-900">Mike Support</h3>
+                        <span class="text-xs text-green-700">2 hours ago</span>
+                      </div>
+                      <p class="text-xs text-gray-700 mb-1">Successful login from 192.168.1.112</p>
+                      <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span>Firefox 121.0 • Ubuntu 22.04</span>
+                        <span>•</span>
+                        <span>Delhi, India</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-amber-200 rounded-large bg-amber-50">
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between mb-1">
+                        <h3 class="font-heading text-sm font-semibold text-gray-900">Emily Growth</h3>
+                        <span class="text-xs text-amber-700">3 hours ago</span>
+                      </div>
+                      <p class="text-xs text-gray-700 mb-1">Login from new device - 2FA required</p>
+                      <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span>Chrome 120.0 • Android 14</span>
+                        <span>•</span>
+                        <span>Pune, India</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-4 border border-green-200 rounded-large bg-green-50">
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between mb-1">
+                        <h3 class="font-heading text-sm font-semibold text-gray-900">David Verify</h3>
+                        <span class="text-xs text-green-700">4 hours ago</span>
+                      </div>
+                      <p class="text-xs text-gray-700 mb-1">Successful login from 192.168.1.120</p>
+                      <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span>Edge 120.0 • Windows 11</span>
+                        <span>•</span>
+                        <span>Hyderabad, India</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-4 border-t border-gray-200">
+                <div class="flex items-center justify-between text-sm">
+                  <span class="text-gray-700">Total logins today</span>
+                  <span class="font-semibold text-gray-900">847</span>
+                </div>
+                <div class="flex items-center justify-between text-sm mt-2">
+                  <span class="text-gray-700">Failed attempts today</span>
+                  <span class="font-semibold text-red-600">12</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

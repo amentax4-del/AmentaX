@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AX-A8 — Content & AI Moderation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link id="heading-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link id="body-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Inter', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          spacing: {
+            base: '1rem',
+          },
+          borderRadius: {
+            small: '0.5rem',
+            large: '0.75rem',
+          },
+          boxShadow: {
+            custom: 'var(--shadow-custom)',
+            'custom-hover': 'var(--shadow-custom-hover)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      /* Typography */
+      --font-heading-name: 'Inter';
+      --font-body-name: 'Inter';
+      --font-heading: 'Inter', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --letter-spacing-heading: -0.02em;
+      --letter-spacing-body: 0em;
+      
+      /* Spacing */
+      --space-base: 1rem;
+      
+      /* Borders */
+      --radius-small: 0.5rem;
+      --radius-large: 0.75rem;
+      --border-width: 1px;
+      
+      /* Shadows */
+      --shadow-color: 0 0 0;
+      --shadow-offset-x: 0px;
+      --shadow-offset-y: 1px;
+      --shadow-blur: 3px;
+      --shadow-spread: 0px;
+      --shadow-opacity: 0.1;
+      --shadow-custom: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+      --shadow-custom-hover: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+  </style>
+</head>
+<body class="font-body bg-gray-50" style="height: auto; min-height: 100%;">
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
+      <div class="p-6 border-b border-gray-200">
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1633409361618-c73427e4e206?w=40&h=40&fit=crop" alt="Logo" class="w-10 h-10 rounded-small">
+          <div>
+            <h1 class="font-heading text-lg font-bold text-gray-900">AdminX</h1>
+            <p class="text-xs text-gray-500">Platform Control</p>
+          </div>
+        </div>
+      </div>
+      
+      <nav class="flex-1 p-4 space-y-1">
+        <a href="#dashboard" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="#mentors" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
+          <span>Mentors</span>
+        </a>
+        <a href="#support" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <span>Support</span>
+        </a>
+        <a href="#fraud" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+          </svg>
+          <span>Fraud Detection</span>
+        </a>
+        <a href="#revenue" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Revenue Control</span>
+        </a>
+        <a href="#analytics" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+          </svg>
+          <span>Analytics</span>
+        </a>
+        <a href="#leaderboard" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+          </svg>
+          <span>Leaderboard</span>
+        </a>
+        <a href="#moderation" class="flex items-center gap-3 px-3 py-2 bg-blue-50 text-blue-600 rounded-small font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+          <span>Moderation</span>
+        </a>
+        <a href="#settings" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+      
+      <div class="p-4 border-t border-gray-200">
+        <div class="flex items-center gap-3 px-3 py-2">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop" alt="Admin" class="w-10 h-10 rounded-full">
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-gray-900 truncate">John Admin</p>
+            <p class="text-xs text-gray-500 truncate">admin@adminx.com</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <div class="max-h-[2000px] overflow-auto">
+        <!-- Header -->
+        <header class="bg-white border-b border-gray-200 px-8 py-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <h1 class="font-heading text-3xl font-bold text-gray-900">Content & AI Moderation</h1>
+              <p class="text-gray-600 mt-1">AI-powered content monitoring and automated policy enforcement system</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <button class="px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-small border border-gray-300 font-medium flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Export Report
+              </button>
+              <button class="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-small font-medium shadow-custom flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+                Refresh Queue
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="p-8 space-y-6">
+          <!-- Moderation Status Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-red-100 rounded-small flex items-center justify-center">
+                  <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                  </svg>
+                </div>
+                <span class="text-xs font-medium text-red-600 bg-red-50 px-2 py-1 rounded-small">Critical</span>
+              </div>
+              <h3 class="font-heading text-2xl font-bold text-gray-900">47</h3>
+              <p class="text-sm text-gray-600 mt-1">Flagged Content</p>
+              <p class="text-xs text-gray-500 mt-2">Requires immediate review</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-amber-100 rounded-small flex items-center justify-center">
+                  <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                  </svg>
+                </div>
+                <span class="text-xs font-medium text-amber-600 bg-amber-50 px-2 py-1 rounded-small">Monitoring</span>
+              </div>
+              <h3 class="font-heading text-2xl font-bold text-gray-900">284</h3>
+              <p class="text-sm text-gray-600 mt-1">Under Review</p>
+              <p class="text-xs text-gray-500 mt-2">AI confidence: 65-85%</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-small flex items-center justify-center">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                </div>
+                <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-small">Active</span>
+              </div>
+              <h3 class="font-heading text-2xl font-bold text-gray-900">12,847</h3>
+              <p class="text-sm text-gray-600 mt-1">Scanned Today</p>
+              <p class="text-xs text-gray-500 mt-2">Real-time monitoring</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-green-100 rounded-small flex items-center justify-center">
+                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-small">+94%</span>
+              </div>
+              <h3 class="font-heading text-2xl font-bold text-gray-900">97.2%</h3>
+              <p class="text-sm text-gray-600 mt-1">AI Accuracy</p>
+              <p class="text-xs text-gray-500 mt-2">Last 30 days</p>
+            </div>
+          </div>
+
+          <!-- AI Detection Rules Configuration -->
+          <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h2 class="font-heading text-xl font-bold text-gray-900">AI Detection Rules</h2>
+                <p class="text-sm text-gray-600 mt-1">Configure automated content flagging thresholds and sensitivity</p>
+              </div>
+              <button class="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-small font-medium shadow-custom">
+                Save Configuration
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div class="space-y-4">
+                <div class="bg-red-50 p-4 rounded-large border border-red-200">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                      <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                      </svg>
+                      <label class="text-sm font-semibold text-red-900">Toxic Language Detection</label>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-sm font-bold text-red-600">High</span>
+                      <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" checked class="sr-only peer">
+                        <div class="w-11 h-6 bg-red-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between text-xs text-red-700">
+                      <span>Sensitivity Level</span>
+                      <span class="font-semibold">85%</span>
+                    </div>
+                    <input type="range" min="0" max="100" value="85" class="w-full h-2 bg-red-200 rounded-full appearance-none cursor-pointer">
+                  </div>
+                  <p class="text-xs text-red-700 mt-3">Auto-flags: Hate speech, profanity, harassment, threats</p>
+                </div>
+
+                <div class="bg-amber-50 p-4 rounded-large border border-amber-200">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                      <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                      <label class="text-sm font-semibold text-amber-900">Payment Redirection</label>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-sm font-bold text-amber-600">High</span>
+                      <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" checked class="sr-only peer">
+                        <div class="w-11 h-6 bg-amber-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-600"></div>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between text-xs text-amber-700">
+                      <span>Sensitivity Level</span>
+                      <span class="font-semibold">90%</span>
+                    </div>
+                    <input type="range" min="0" max="100" value="90" class="w-full h-2 bg-amber-200 rounded-full appearance-none cursor-pointer">
+                  </div>
+                  <p class="text-xs text-amber-700 mt-3">Detects: External payment links, Venmo, PayPal, bank transfers</p>
+                </div>
+
+                <div class="bg-purple-50 p-4 rounded-large border border-purple-200">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                      <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                      </svg>
+                      <label class="text-sm font-semibold text-purple-900">Contact Info Sharing</label>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-sm font-bold text-purple-600">Medium</span>
+                      <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" checked class="sr-only peer">
+                        <div class="w-11 h-6 bg-purple-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between text-xs text-purple-700">
+                      <span>Sensitivity Level</span>
+                      <span class="font-semibold">70%</span>
+                    </div>
+                    <input type="range" min="0" max="100" value="70" class="w-full h-2 bg-purple-200 rounded-full appearance-none cursor-pointer">
+                  </div>
+                  <p class="text-xs text-purple-700 mt-3">Detects: Email, phone, social media handles, external links</p>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-large border border-blue-200">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                      <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                      </svg>
+                      <label class="text-sm font-semibold text-blue-900">Spam Behavior</label>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-sm font-bold text-blue-600">Medium</span>
+                      <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" checked class="sr-only peer">
+                        <div class="w-11 h-6 bg-blue-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between text-xs text-blue-700">
+                      <span>Sensitivity Level</span>
+                      <span class="font-semibold">75%</span>
+                    </div>
+                    <input type="range" min="0" max="100" value="75" class="w-full h-2 bg-blue-200 rounded-full appearance-none cursor-pointer">
+                  </div>
+                  <p class="text-xs text-blue-700 mt-3">Detects: Repetitive messages, mass messaging, copy-paste patterns</p>
+                </div>
+              </div>
+
+              <div>
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-large border border-gray-200 mb-4">
+                  <h3 class="font-heading text-sm font-semibold text-gray-900 mb-4">Detection Summary</h3>
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-gray-700">Active Rules:</span>
+                      <span class="font-semibold text-gray-900">4 of 4</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-gray-700">Average Sensitivity:</span>
+                      <span class="font-semibold text-gray-900">80%</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-gray-700">Auto-Action Enabled:</span>
+                      <span class="font-semibold text-green-600">Yes</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm text-gray-700">Manual Review Queue:</span>
+                      <span class="font-semibold text-gray-900">47 items</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-large border border-blue-200 mb-4">
+                  <h3 class="font-heading text-sm font-semibold text-blue-900 mb-3">AI Model Performance</h3>
+                  <div class="space-y-3">
+                    <div>
+                      <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-blue-700">Accuracy Rate</span>
+                        <span class="text-xs font-bold text-blue-900">97.2%</span>
+                      </div>
+                      <div class="w-full bg-blue-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 97%;"></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-blue-700">False Positive Rate</span>
+                        <span class="text-xs font-bold text-blue-900">2.8%</span>
+                      </div>
+                      <div class="w-full bg-blue-200 rounded-full h-2">
+                        <div class="bg-amber-500 h-2 rounded-full" style="width: 3%;"></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-blue-700">Processing Speed</span>
+                        <span class="text-xs font-bold text-blue-900">142ms avg</span>
+                      </div>
+                      <div class="w-full bg-blue-200 rounded-full h-2">
+                        <div class="bg-green-500 h-2 rounded-full" style="width: 88%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-amber-50 p-4 rounded-large border border-amber-200">
+                  <div class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <div>
+                      <p class="text-sm font-semibold text-amber-900">AI Learning Mode</p>
+                      <p class="text-xs text-amber-700 mt-1">Model continuously learns from admin decisions to improve accuracy. Last training: 2 hours ago</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flagged Content Queue -->
+          <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h2 class="font-heading text-xl font-bold text-gray-900">Flagged Content Queue</h2>
+                <p class="text-sm text-gray-600 mt-1">Review and take action on AI-detected violations</p>
+              </div>
+              <div class="flex items-center gap-3">
+                <select class="text-sm border border-gray-300 rounded-small px-3 py-2 text-gray-700">
+                  <option>All Types</option>
+                  <option>Toxic Language</option>
+                  <option>Payment Redirect</option>
+                  <option>Contact Sharing</option>
+                  <option>Spam Behavior</option>
+                </select>
+                <select class="text-sm border border-gray-300 rounded-small px-3 py-2 text-gray-700">
+                  <option>All Severity</option>
+                  <option>Critical</option>
+                  <option>High</option>
+                  <option>Medium</option>
+                  <option>Low</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <!-- Critical Violation -->
+              <div class="border border-red-200 rounded-large p-4 bg-red-50">
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-2">
+                      <div class="flex items-center gap-3">
+                        <span class="text-xs font-medium text-red-600 bg-red-100 px-2 py-1 rounded-small">CRITICAL</span>
+                        <span class="text-xs font-medium text-red-600 bg-red-100 px-2 py-1 rounded-small">Toxic Language</span>
+                        <span class="text-xs text-red-600">AI Confidence: 94%</span>
+                      </div>
+                      <span class="text-xs text-red-600">2 min ago</span>
+                    </div>
+                    <div class="bg-white p-3 rounded-small border border-red-200 mb-3">
+                      <div class="flex items-center gap-2 mb-2">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop" alt="User" class="w-8 h-8 rounded-full">
+                        <div>
+                          <p class="text-sm font-semibold text-gray-900">Michael Chen</p>
+                          <p class="text-xs text-gray-500">Chat Message • Session #28473</p>
+                        </div>
+                      </div>
+                      <p class="text-sm text-gray-700 italic">"[Flagged content containing hate speech and threats - content hidden for review]"</p>
+                      <div class="flex items-center gap-2 mt-2">
+                        <span class="text-xs text-red-600 font-medium">Detected: Hate speech, threats, harassment</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <button class="px-3 py-1.5 bg-red-600 text-white hover:bg-red-700 rounded-small text-sm font-medium">
+                        Suspend User
+                      </button>
+                      <button class="px-3 py-1.5 bg-amber-600 text-white hover:bg-amber-700 rounded-small text-sm font-medium">
+                        Issue Warning
+                      </button>
+                      <button class="px-3 py-1.5 bg-gray-600 text-white hover:bg-gray-700 rounded-small text-sm font-medium">
+                        Delete Content
+                      </button>
+                      <button class="px-3 py-1.5 text-gray-700 hover:bg-gray-100 rounded-small text-sm font-medium border border-gray-300">
+                        Mark Safe
+                      </button>
+                      <button class="px-3 py-1.5 text-blue-600 hover:bg-blue-50 rounded-small text-sm font-medium">
+                        View Full Context
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- High Severity Violation -->
+              <div class="border border-amber-200 rounded-large p-4 bg-amber-50">
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-2">
+                      <div class="flex items-center gap-3">
+                        <span class="text-xs font-medium text-amber-600 bg-amber-100 px-2 py-1 rounded-small">HIGH</span>
+                        <span class="text-xs font-medium text-amber-600 bg-amber-100 px-2 py-1 rounded-small">Payment Redirect</span>
+                        <span class="text-xs text-amber-600">AI Confidence: 89%</span>
+                      </div>
+                      <span class="text-xs text-amber-600">8 min ago</span>
+                    </div>
+                    <div class="bg-white p-3 rounded-small border border-amber-200 mb-3">
+                      <div class="flex items-center gap-2 mb-2">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=32&h=32&fit=crop" alt="User" class="w-8 h-8 rounded-full">
+                        <div>
+                          <p class="text-sm font-semibold text-gray-900">Sarah Johnson</p>
+                          <p class="text-xs text-gray-500">Chat Message • Session #28471</p>
+                        </div>
+                      </div>
+                      <p class="text-sm text-gray-700">"Hey, let's continue this outside the platform. Send payment to my PayPal: sarah.j@email.com and we can schedule directly."</p>
+                      <div class="flex items-center gap-2 mt-2">
+                        <span class="text-xs text-amber-600 font-medium">Detected: External payment method (PayPal)</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <button class="px-3 py-1.5 bg-red-600 text-white hover:bg-red-700 rounded-small text-sm font-medium">
+                        Suspend User
+                      </button>
+                      <button class="px-3 py-1.5 bg-amber-600 text-white hover:bg-amber-700 rounded-small text-sm font-medium">
+                        Issue Warning
+                      </button>
+                      <button class="px-3 py-1.5 bg-gray-600 text-white hover:bg-gray-700 rounded-small text-sm font-medium">
+                        Delete Content
+                      </button>
+                      <button class="px-3 py-1.5 text-gray-700 hover:bg-gray-100 rounded-small text-sm font-medium border border-gray-300">
+                        Mark Safe
+                      </button>
+                      <button class="px-3 py-1.5 text-blue-600 hover:bg-blue-50 rounded-small text-sm font-medium">
+                        View Full Context
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Medium Severity Violation -->
+              <div class="border border-purple-200 rounded-large p-4 bg-purple-50">
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-2">
+                      <div class="flex items-center gap-3">
+                        <span class="text-xs font-medium text-purple-600 bg-purple-100 px-2 py-1 rounded-small">MEDIUM</span>
+                        <span class="text-xs font-medium text-purple-600 bg-purple-100 px-2 py-1 rounded-small">Contact Sharing</span>
+                        <span class="text-xs text-purple-600">AI Confidence: 82%</span>
+                      </div>
+                      <span class="text-xs text-purple-600">15 min ago</span>
+                    </div>
+                    <div class="bg-white p-3 rounded-small border border-purple-200 mb-3">
+                      <div class="flex items-center gap-2 mb-2">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop" alt="User" class="w-8 h-8 rounded-full">
+                        <div>
+                          <p class="text-sm font-semibold text-gray-900">Emily Rodriguez</p>
+                          <p class="text-xs text-gray-500">Session Notes Upload • Session #28469</p>
+                        </div>
+                      </div>
+                      <p class="text-sm text-gray-700">"Great session! Feel free to reach out anytime at emily.rodriguez@gmail.com or call me at (555) 123-4567. Also follow me on Instagram @emilymentors"</p>
+                      <div class="flex items-center gap-2 mt-2">
+                        <span class="text-xs text-purple-600 font-medium">Detected: Email, phone number, social media handle</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <button class="px-3 py-1.5 bg-amber-600 text-white hover:bg-amber-700 rounded-small text-sm font-medium">
+                        Issue Warning
+                      </button>
+                      <button class="px-3 py-1.5 bg-gray-600 text-white hover:bg-gray-700 rounded-small text-sm font-medium">
+                        Delete Content
+                      </button>
+                      <button class="px-3 py-1.5 text-gray-700 hover:bg-gray-100 rounded-small text-sm font-medium border border-gray-300">
+                        Mark Safe
+                      </button>
+                      <button class="px-3 py-1.5 text-blue-600 hover:bg-blue-50 rounded-small text-sm font-medium">
+                        View Full Context
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Medium Severity Violation - Spam -->
+              <div class="border border-blue-200 rounded-large p-4 bg-blue-50">
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-2">
+                      <div class="flex items-center gap-3">
+                        <span class="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-small">MEDIUM</span>
+                        <span class="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-small">Spam Behavior</span>
+                        <span class="text-xs text-blue-600">AI Confidence: 78%</span>
+                      </div>
+                      <span class="text-xs text-blue-600">22 min ago</span>
+                    </div>
+                    <div class="bg-white p-3 rounded-small border border-blue-200 mb-3">
+                      <div class="flex items-center gap-2 mb-2">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=32&h=32&fit=crop" alt="User" class="w-8 h-8 rounded-full">
+                        <div>
+                          <p class="text-sm font-semibold text-gray-900">David Kim</p>
+                          <p class="text-xs text-gray-500">Multiple Chat Messages • 12 recipients</p>
+                        </div>
+                      </div>
+                      <p class="text-sm text-gray-700">"Hi! I'm offering a special discount on my mentoring services this week. Book now and get 50% off! Limited time offer..."</p>
+                      <div class="flex items-center gap-2 mt-2">
+                        <span class="text-xs text-blue-600 font-medium">Detected: Mass messaging (12 identical messages in 5 min)</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <button class="px-3 py-1.5 bg-amber-600 text-white hover:bg-amber-700 rounded-small text-sm font-medium">
+                        Issue Warning
+                      </button>
+                      <button class="px-3 py-1.5 bg-gray-600 text-white hover:bg-gray-700 rounded-small text-sm font-medium">
+                        Delete Content
+                      </button>
+                      <button class="px-3 py-1.5 text-gray-700 hover:bg-gray-100 rounded-small text-sm font-medium border border-gray-300">
+                        Mark Safe
+                      </button>
+                      <button class="px-3 py-1.5 text-blue-600 hover:bg-blue-50 rounded-small text-sm font-medium">
+                        View Full Context
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 flex items-center justify-between">
+              <p class="text-sm text-gray-600">Showing 4 of 47 flagged items</p>
+              <button class="text-sm text-blue-600 hover:text-blue-700 font-medium">Load More →</button>
+            </div>
+          </div>
+
+          <!-- Content Monitoring Stats -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Detection Breakdown -->
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <h3 class="font-heading text-lg font-semibold text-gray-900 mb-4">Detection Breakdown</h3>
+              <div class="space-y-3">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm text-gray-700">Toxic Language</span>
+                    <span class="text-sm font-semibold text-gray-900">18</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-red-500 h-2 rounded-full" style="width: 38%;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm text-gray-700">Payment Redirect</span>
+                    <span class="text-sm font-semibold text-gray-900">12</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-amber-500 h-2 rounded-full" style="width: 26%;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm text-gray-700">Contact Sharing</span>
+                    <span class="text-sm font-semibold text-gray-900">10</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-purple-500 h-2 rounded-full" style="width: 21%;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm text-gray-700">Spam Behavior</span>
+                    <span class="text-sm font-semibold text-gray-900">7</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-blue-500 h-2 rounded-full" style="width: 15%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action History -->
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <h3 class="font-heading text-lg font-semibold text-gray-900 mb-4">Action History (24h)</h3>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Content Deleted</span>
+                  <span class="text-sm font-semibold text-gray-900">142</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Warnings Issued</span>
+                  <span class="text-sm font-semibold text-gray-900">87</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Users Suspended</span>
+                  <span class="text-sm font-semibold text-gray-900">23</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Marked Safe</span>
+                  <span class="text-sm font-semibold text-gray-900">56</span>
+                </div>
+                <div class="flex items-center justify-between pt-3 border-t border-gray-200">
+                  <span class="text-sm font-semibold text-gray-900">Total Actions</span>
+                  <span class="text-sm font-bold text-blue-600">308</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review Performance -->
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <h3 class="font-heading text-lg font-semibold text-gray-900 mb-4">Review Performance</h3>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Avg Review Time</span>
+                  <span class="text-sm font-semibold text-gray-900">2.4 min</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Queue Wait Time</span>
+                  <span class="text-sm font-semibold text-gray-900">8.7 min</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">AI Override Rate</span>
+                  <span class="text-sm font-semibold text-gray-900">12.3%</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Admin Accuracy</span>
+                  <span class="text-sm font-semibold text-green-600">98.4%</span>
+                </div>
+                <div class="flex items-center justify-between pt-3 border-t border-gray-200">
+                  <span class="text-sm font-semibold text-gray-900">Items Reviewed</span>
+                  <span class="text-sm font-bold text-blue-600">1,247</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AX-A9 — Marketing & Growth Experiments</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link id="heading-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link id="body-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Inter', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          spacing: {
+            base: '1rem',
+          },
+          borderRadius: {
+            small: '0.5rem',
+            large: '0.75rem',
+          },
+          boxShadow: {
+            custom: 'var(--shadow-custom)',
+            'custom-hover': 'var(--shadow-custom-hover)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      /* Typography */
+      --font-heading-name: 'Inter';
+      --font-body-name: 'Inter';
+      --font-heading: 'Inter', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --letter-spacing-heading: -0.02em;
+      --letter-spacing-body: 0em;
+      
+      /* Spacing */
+      --space-base: 1rem;
+      
+      /* Borders */
+      --radius-small: 0.5rem;
+      --radius-large: 0.75rem;
+      --border-width: 1px;
+      
+      /* Shadows */
+      --shadow-color: 0 0 0;
+      --shadow-offset-x: 0px;
+      --shadow-offset-y: 1px;
+      --shadow-blur: 3px;
+      --shadow-spread: 0px;
+      --shadow-opacity: 0.1;
+      --shadow-custom: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+      --shadow-custom-hover: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+  </style>
+</head>
+<body class="font-body bg-gray-50" style="height: auto; min-height: 100%;">
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
+      <div class="p-6 border-b border-gray-200">
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1633409361618-c73427e4e206?w=40&h=40&fit=crop" alt="Logo" class="w-10 h-10 rounded-small">
+          <div>
+            <h1 class="font-heading text-lg font-bold text-gray-900">AdminX</h1>
+            <p class="text-xs text-gray-500">Platform Control</p>
+          </div>
+        </div>
+      </div>
+      
+      <nav class="flex-1 p-4 space-y-1">
+        <a href="#dashboard" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="#mentors" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
+          <span>Mentors</span>
+        </a>
+        <a href="#support" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <span>Support</span>
+        </a>
+        <a href="#fraud" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+          </svg>
+          <span>Fraud Detection</span>
+        </a>
+        <a href="#revenue" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>Revenue Control</span>
+        </a>
+        <a href="#analytics" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+          </svg>
+          <span>Analytics</span>
+        </a>
+        <a href="#leaderboard" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+          </svg>
+          <span>Leaderboard</span>
+        </a>
+        <a href="#moderation" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+          <span>Moderation</span>
+        </a>
+        <a href="#experiments" class="flex items-center gap-3 px-3 py-2 bg-blue-50 text-blue-600 rounded-small font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+          </svg>
+          <span>Experiments</span>
+        </a>
+        <a href="#settings" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-small">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+      
+      <div class="p-4 border-t border-gray-200">
+        <div class="flex items-center gap-3 px-3 py-2">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop" alt="Admin" class="w-10 h-10 rounded-full">
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-gray-900 truncate">John Admin</p>
+            <p class="text-xs text-gray-500 truncate">admin@adminx.com</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <div class="max-h-[2000px] overflow-auto">
+        <!-- Header -->
+        <header class="bg-white border-b border-gray-200 px-8 py-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <h1 class="font-heading text-3xl font-bold text-gray-900">Marketing & Growth Experiments</h1>
+              <p class="text-gray-600 mt-1">Conversion optimization control panel for A/B tests and growth campaigns</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <button class="px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-small border border-gray-300 font-medium flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+                View Analytics
+              </button>
+              <button class="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-small font-medium shadow-custom flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                Create Experiment
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="p-8 space-y-6">
+          <!-- Active Experiments Overview -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-small flex items-center justify-center">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                  </svg>
+                </div>
+                <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-small">Active</span>
+              </div>
+              <h3 class="font-heading text-2xl font-bold text-gray-900">12</h3>
+              <p class="text-sm text-gray-600 mt-1">Active Experiments</p>
+              <p class="text-xs text-gray-500 mt-2">Running campaigns</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-green-100 rounded-small flex items-center justify-center">
+                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                  </svg>
+                </div>
+                <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-small">+24%</span>
+              </div>
+              <h3 class="font-heading text-2xl font-bold text-gray-900">18.4%</h3>
+              <p class="text-sm text-gray-600 mt-1">Avg Conversion Lift</p>
+              <p class="text-xs text-gray-500 mt-2">Across all experiments</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-purple-100 rounded-small flex items-center justify-center">
+                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                  </svg>
+                </div>
+                <span class="text-xs font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded-small">Live</span>
+              </div>
+              <h3 class="font-heading text-2xl font-bold text-gray-900">47,283</h3>
+              <p class="text-sm text-gray-600 mt-1">Users in Tests</p>
+              <p class="text-xs text-gray-500 mt-2">Current exposure</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-amber-100 rounded-small flex items-center justify-center">
+                  <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <span class="text-xs font-medium text-amber-600 bg-amber-50 px-2 py-1 rounded-small">+$42K</span>
+              </div>
+              <h3 class="font-heading text-2xl font-bold text-gray-900">$127K</h3>
+              <p class="text-sm text-gray-600 mt-1">Revenue Impact</p>
+              <p class="text-xs text-gray-500 mt-2">Last 30 days</p>
+            </div>
+          </div>
+
+          <!-- Limited-Time Banners -->
+          <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h2 class="font-heading text-xl font-bold text-gray-900">Limited-Time Banners</h2>
+                <p class="text-sm text-gray-600 mt-1">Urgency-driven promotional banners for homepage and key pages</p>
+              </div>
+              <button class="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-small font-medium shadow-custom">
+                Add Banner
+              </button>
+            </div>
+
+            <div class="space-y-4">
+              <div class="border border-green-200 rounded-large p-4 bg-green-50">
+                <div class="flex items-start gap-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-3">
+                      <span class="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-small">ACTIVE</span>
+                      <span class="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-small">Homepage</span>
+                      <span class="text-xs text-green-700">Ends in 2d 14h</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-small border border-green-200 mb-3">
+                      <p class="text-sm font-semibold text-gray-900">🎉 Spring Sale: 40% Off All Mentorship Sessions - Limited Time Only!</p>
+                      <p class="text-xs text-gray-600 mt-1">CTA: "Claim Your Discount" • Shown to: All visitors</p>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4">
+                      <div>
+                        <p class="text-xs text-green-700">Impressions</p>
+                        <p class="text-sm font-semibold text-gray-900">24,847</p>
+                      </div>
+                      <div>
+                        <p class="text-xs text-green-700">Click Rate</p>
+                        <p class="text-sm font-semibold text-gray-900">8.4%</p>
+                      </div>
+                      <div>
+                        <p class="text-xs text-green-700">Conversions</p>
+                        <p class="text-sm font-semibold text-gray-900">342</p>
+                      </div>
+                      <div>
+                        <p class="text-xs text-green-700">Revenue</p>
+                        <p class="text-sm font-semibold text-gray-900">$18,247</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" checked class="sr-only peer">
+                      <div class="w-11 h-6 bg-green-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                    </label>
+                    <button class="px-3 py-1.5 text-gray-700 hover:bg-gray-100 rounded-small text-sm font-medium border border-gray-300">
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border border-blue-200 rounded-large p-4 bg-blue-50">
+                <div class="flex items-start gap-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-3">
+                      <span class="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-small">ACTIVE</span>
+                      <span class="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-small">Checkout Page</span>
+                      <span class="text-xs text-blue-700">Ends in 5d 8h</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-small border border-blue-200 mb-3">
+                      <p class="text-sm font-semibold text-gray-900">⚡ Last Chance: Book Now & Get 2 Free Follow-Up Sessions!</p>
+                      <p class="text-xs text-gray-600 mt-1">CTA: "Complete Booking" • Shown to: Cart abandoners</p>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4">
+                      <div>
+                        <p class="text-xs text-blue-700">Impressions</p>
+                        <p class="text-sm font-semibold text-gray-900">8,423</p>
+                      </div>
+                      <div>
+                        <p class="text-xs text-blue-700">Click Rate</p>
+                        <p class="text-sm font-semibold text-gray-900">12.7%</p>
+                      </div>
+                      <div>
+                        <p class="text-xs text-blue-700">Conversions</p>
+                        <p class="text-sm font-semibold text-gray-900">147</p>
+                      </div>
+                      <div>
+                        <p class="text-xs text-blue-700">Revenue</p>
+                        <p class="text-sm font-semibold text-gray-900">$9,842</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" checked class="sr-only peer">
+                      <div class="w-11 h-6 bg-blue-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                    <button class="px-3 py-1.5 text-gray-700 hover:bg-gray-100 rounded-small text-sm font-medium border border-gray-300">
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border border-gray-200 rounded-large p-4 bg-gray-50">
+                <div class="flex items-start gap-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-3">
+                      <span class="text-xs font-medium text-gray-600 bg-gray-200 px-2 py-1 rounded-small">PAUSED</span>
+                      <span class="text-xs font-medium text-gray-600 bg-gray-200 px-2 py-1 rounded-small">Profile Page</span>
+                      <span class="text-xs text-gray-600">Scheduled: Tomorrow 9am</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-small border border-gray-200 mb-3">
+                      <p class="text-sm font-semibold text-gray-900">🔥 Exclusive: Refer 3 Friends & Get 1 Month Free Premium!</p>
+                      <p class="text-xs text-gray-600 mt-1">CTA: "Start Referring" • Shown to: Premium users</p>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4">
+                      <div>
+                        <p class="text-xs text-gray-600">Impressions</p>
+                        <p class="text-sm font-semibold text-gray-900">-</p>
+                      </div>
+                      <div>
+                        <p class="text-xs text-gray-600">Click Rate</p>
+                        <p class="text-sm font-semibold text-gray-900">-</p>
+                      </div>
+                      <div>
+                        <p class="text-xs text-gray-600">Conversions</p>
+                        <p class="text-sm font-semibold text-gray-900">-</p>
+                      </div>
+                      <div>
+                        <p class="text-xs text-gray-600">Revenue</p>
+                        <p class="text-sm font-semibold text-gray-900">-</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" class="sr-only peer">
+                      <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gray-600"></div>
+                    </label>
+                    <button class="px-3 py-1.5 text-gray-700 hover:bg-gray-100 rounded-small text-sm font-medium border border-gray-300">
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- A/B Test CTA Experiments & Scarcity Messages -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- A/B Test CTA Text -->
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h2 class="font-heading text-lg font-semibold text-gray-900">A/B Test: CTA Text</h2>
+                  <p class="text-sm text-gray-600 mt-1">Testing button copy variations</p>
+                </div>
+                <button class="px-3 py-1.5 bg-blue-600 text-white hover:bg-blue-700 rounded-small text-sm font-medium">
+                  New Test
+                </button>
+              </div>
+
+              <div class="space-y-4">
+                <div class="border border-green-200 rounded-large p-4 bg-green-50">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-small">WINNING</span>
+                      <span class="text-xs text-green-700">Variant B</span>
+                    </div>
+                    <span class="text-xs font-bold text-green-600">+23% Conv</span>
+                  </div>
+                  <div class="bg-white p-3 rounded-small border border-green-200 mb-3">
+                    <p class="text-sm font-semibold text-gray-900">"Start Your Journey Today"</p>
+                    <p class="text-xs text-gray-600 mt-1">vs Control: "Book Now"</p>
+                  </div>
+                  <div class="grid grid-cols-3 gap-3">
+                    <div>
+                      <p class="text-xs text-green-700">Visitors</p>
+                      <p class="text-sm font-semibold text-gray-900">12,847</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-green-700">Conversions</p>
+                      <p class="text-sm font-semibold text-gray-900">1,284</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-green-700">Rate</p>
+                      <p class="text-sm font-semibold text-gray-900">10.0%</p>
+                    </div>
+                  </div>
+                  <button class="w-full mt-3 px-3 py-2 bg-green-600 text-white hover:bg-green-700 rounded-small text-sm font-medium">
+                    Deploy Winner
+                  </button>
+                </div>
+
+                <div class="border border-blue-200 rounded-large p-4 bg-blue-50">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-small">TESTING</span>
+                      <span class="text-xs text-blue-700">Variant A vs B</span>
+                    </div>
+                    <span class="text-xs font-bold text-blue-600">Running</span>
+                  </div>
+                  <div class="bg-white p-3 rounded-small border border-blue-200 mb-3">
+                    <p class="text-sm font-semibold text-gray-900">"Get Started Free" vs "Try 7 Days Free"</p>
+                    <p class="text-xs text-gray-600 mt-1">Trial signup page</p>
+                  </div>
+                  <div class="grid grid-cols-3 gap-3">
+                    <div>
+                      <p class="text-xs text-blue-700">Visitors</p>
+                      <p class="text-sm font-semibold text-gray-900">4,283</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-blue-700">Conversions</p>
+                      <p class="text-sm font-semibold text-gray-900">342</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-blue-700">Rate</p>
+                      <p class="text-sm font-semibold text-gray-900">8.0%</p>
+                    </div>
+                  </div>
+                  <button class="w-full mt-3 px-3 py-2 text-blue-600 hover:bg-blue-100 rounded-small text-sm font-medium border border-blue-300">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scarcity Messages -->
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h2 class="font-heading text-lg font-semibold text-gray-900">Scarcity Messages</h2>
+                  <p class="text-sm text-gray-600 mt-1">Dynamic urgency indicators</p>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" checked class="sr-only peer">
+                  <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                </label>
+              </div>
+
+              <div class="space-y-4">
+                <div class="border border-red-200 rounded-large p-4 bg-red-50">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-medium text-red-600 bg-red-100 px-2 py-1 rounded-small">HIGH URGENCY</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" checked class="sr-only peer">
+                      <div class="w-11 h-6 bg-red-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                    </label>
+                  </div>
+                  <div class="bg-white p-3 rounded-small border border-red-200 mb-3">
+                    <p class="text-sm font-semibold text-gray-900">⏰ Only 3 spots left for this mentor today!</p>
+                    <p class="text-xs text-gray-600 mt-1">Mentor profile pages • Updates every 15 min</p>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Impact on bookings:</span>
+                    <span class="font-semibold text-green-600">+34%</span>
+                  </div>
+                </div>
+
+                <div class="border border-amber-200 rounded-large p-4 bg-amber-50">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-medium text-amber-600 bg-amber-100 px-2 py-1 rounded-small">MEDIUM URGENCY</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" checked class="sr-only peer">
+                      <div class="w-11 h-6 bg-amber-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-600"></div>
+                    </label>
+                  </div>
+                  <div class="bg-white p-3 rounded-small border border-amber-200 mb-3">
+                    <p class="text-sm font-semibold text-gray-900">🔥 47 people viewing this session right now</p>
+                    <p class="text-xs text-gray-600 mt-1">Session detail pages • Real-time counter</p>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Impact on bookings:</span>
+                    <span class="font-semibold text-green-600">+18%</span>
+                  </div>
+                </div>
+
+                <div class="border border-purple-200 rounded-large p-4 bg-purple-50">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-medium text-purple-600 bg-purple-100 px-2 py-1 rounded-small">SOCIAL PROOF</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" checked class="sr-only peer">
+                      <div class="w-11 h-6 bg-purple-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                    </label>
+                  </div>
+                  <div class="bg-white p-3 rounded-small border border-purple-200 mb-3">
+                    <p class="text-sm font-semibold text-gray-900">✨ 284 sessions booked in the last 24 hours</p>
+                    <p class="text-xs text-gray-600 mt-1">Homepage banner • Updates hourly</p>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Impact on signups:</span>
+                    <span class="font-semibold text-green-600">+12%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trial Price Experiments & Push Notifications -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Trial Price Experiments -->
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h2 class="font-heading text-lg font-semibold text-gray-900">Trial Price Experiments</h2>
+                  <p class="text-sm text-gray-600 mt-1">Testing pricing tiers and trial offers</p>
+                </div>
+                <button class="px-3 py-1.5 bg-blue-600 text-white hover:bg-blue-700 rounded-small text-sm font-medium">
+                  New Test
+                </button>
+              </div>
+
+              <div class="space-y-4">
+                <div class="border border-green-200 rounded-large p-4 bg-green-50">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-small">WINNING</span>
+                      <span class="text-xs text-green-700">$1 for 7 days</span>
+                    </div>
+                    <span class="text-xs font-bold text-green-600">+41% Conv</span>
+                  </div>
+                  <div class="bg-white p-3 rounded-small border border-green-200 mb-3">
+                    <p class="text-sm font-semibold text-gray-900">$1 Trial (7 days) → $29/month</p>
+                    <p class="text-xs text-gray-600 mt-1">vs Control: $9.99 Trial (14 days)</p>
+                  </div>
+                  <div class="grid grid-cols-3 gap-3 mb-3">
+                    <div>
+                      <p class="text-xs text-green-700">Signups</p>
+                      <p class="text-sm font-semibold text-gray-900">2,847</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-green-700">Converts</p>
+                      <p class="text-sm font-semibold text-gray-900">1,284</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-green-700">Rate</p>
+                      <p class="text-sm font-semibold text-gray-900">45.1%</p>
+                    </div>
+                  </div>
+                  <button class="w-full px-3 py-2 bg-green-600 text-white hover:bg-green-700 rounded-small text-sm font-medium">
+                    Deploy Winner
+                  </button>
+                </div>
+
+                <div class="border border-blue-200 rounded-large p-4 bg-blue-50">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-small">TESTING</span>
+                      <span class="text-xs text-blue-700">Annual discount</span>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" checked class="sr-only peer">
+                      <div class="w-11 h-6 bg-blue-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                  </div>
+                  <div class="bg-white p-3 rounded-small border border-blue-200 mb-3">
+                    <p class="text-sm font-semibold text-gray-900">Annual: 30% off vs 20% off</p>
+                    <p class="text-xs text-gray-600 mt-1">Testing discount depth impact</p>
+                  </div>
+                  <div class="grid grid-cols-3 gap-3">
+                    <div>
+                      <p class="text-xs text-blue-700">Views</p>
+                      <p class="text-sm font-semibold text-gray-900">8,423</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-blue-700">Purchases</p>
+                      <p class="text-sm font-semibold text-gray-900">284</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-blue-700">Rate</p>
+                      <p class="text-sm font-semibold text-gray-900">3.4%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Push Notification Campaigns -->
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h2 class="font-heading text-lg font-semibold text-gray-900">Push Notification Campaigns</h2>
+                  <p class="text-sm text-gray-600 mt-1">Re-engagement and conversion campaigns</p>
+                </div>
+                <button class="px-3 py-1.5 bg-blue-600 text-white hover:bg-blue-700 rounded-small text-sm font-medium">
+                  New Campaign
+                </button>
+              </div>
+
+              <div class="space-y-4">
+                <div class="border border-green-200 rounded-large p-4 bg-green-50">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-small">ACTIVE</span>
+                      <span class="text-xs text-green-700">Cart Abandonment</span>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" checked class="sr-only peer">
+                      <div class="w-11 h-6 bg-green-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                    </label>
+                  </div>
+                  <div class="bg-white p-3 rounded-small border border-green-200 mb-3">
+                    <p class="text-sm font-semibold text-gray-900">🛒 "You left something behind! Complete your booking now."</p>
+                    <p class="text-xs text-gray-600 mt-1">Trigger: 2 hours after cart abandonment</p>
+                  </div>
+                  <div class="grid grid-cols-3 gap-3">
+                    <div>
+                      <p class="text-xs text-green-700">Sent</p>
+                      <p class="text-sm font-semibold text-gray-900">4,283</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-green-700">Opened</p>
+                      <p class="text-sm font-semibold text-gray-900">1,847</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-green-700">Converted</p>
+                      <p class="text-sm font-semibold text-gray-900">342</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="border border-blue-200 rounded-large p-4 bg-blue-50">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-small">ACTIVE</span>
+                      <span class="text-xs text-blue-700">Session Reminder</span>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" checked class="sr-only peer">
+                      <div class="w-11 h-6 bg-blue-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                  </div>
+                  <div class="bg-white p-3 rounded-small border border-blue-200 mb-3">
+                    <p class="text-sm font-semibold text-gray-900">⏰ "Your session starts in 1 hour. Get ready!"</p>
+                    <p class="text-xs text-gray-600 mt-1">Trigger: 1 hour before scheduled session</p>
+                  </div>
+                  <div class="grid grid-cols-3 gap-3">
+                    <div>
+                      <p class="text-xs text-blue-700">Sent</p>
+                      <p class="text-sm font-semibold text-gray-900">12,847</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-blue-700">Opened</p>
+                      <p class="text-sm font-semibold text-gray-900">9,284</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-blue-700">Attended</p>
+                      <p class="text-sm font-semibold text-gray-900">8,847</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="border border-purple-200 rounded-large p-4 bg-purple-50">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs font-medium text-purple-600 bg-purple-100 px-2 py-1 rounded-small">SCHEDULED</span>
+                      <span class="text-xs text-purple-700">Re-engagement</span>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" class="sr-only peer">
+                      <div class="w-11 h-6 bg-purple-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                    </label>
+                  </div>
+                  <div class="bg-white p-3 rounded-small border border-purple-200 mb-3">
+                    <p class="text-sm font-semibold text-gray-900">💡 "We miss you! Here's 20% off your next session."</p>
+                    <p class="text-xs text-gray-600 mt-1">Trigger: 30 days inactive • Sends: Tomorrow 10am</p>
+                  </div>
+                  <div class="grid grid-cols-3 gap-3">
+                    <div>
+                      <p class="text-xs text-purple-700">Target</p>
+                      <p class="text-sm font-semibold text-gray-900">2,847</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-purple-700">Est. Open</p>
+                      <p class="text-sm font-semibold text-gray-900">~1,200</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-purple-700">Est. Conv</p>
+                      <p class="text-sm font-semibold text-gray-900">~180</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Referral Multiplier Events -->
+          <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h2 class="font-heading text-xl font-bold text-gray-900">Referral Multiplier Events</h2>
+                <p class="text-sm text-gray-600 mt-1">Limited-time referral bonus campaigns to drive viral growth</p>
+              </div>
+              <button class="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-small font-medium shadow-custom">
+                Create Event
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div class="border border-green-200 rounded-large p-5 bg-green-50">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-small">ACTIVE</span>
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" checked class="sr-only peer">
+                    <div class="w-11 h-6 bg-green-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                  </label>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-gray-900 mb-2">2x Referral Weekend</h3>
+                <p class="text-sm text-gray-700 mb-4">Double rewards for all referrals made this weekend</p>
+                <div class="bg-white p-3 rounded-small border border-green-200 mb-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs text-green-700">Reward Multiplier</span>
+                    <span class="text-sm font-bold text-green-600">2x</span>
+                  </div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs text-green-700">Duration</span>
+                    <span class="text-sm font-semibold text-gray-900">48 hours</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-green-700">Ends in</span>
+                    <span class="text-sm font-semibold text-gray-900">1d 8h</span>
+                  </div>
+                </div>
+                <div class="space-y-2 mb-4">
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Referrals Made</span>
+                    <span class="font-semibold text-gray-900">847</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Conversions</span>
+                    <span class="font-semibold text-gray-900">284</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Revenue Impact</span>
+                    <span class="font-semibold text-green-600">$18,247</span>
+                  </div>
+                </div>
+                <button class="w-full px-3 py-2 text-green-700 hover:bg-green-100 rounded-small text-sm font-medium border border-green-300">
+                  View Details
+                </button>
+              </div>
+
+              <div class="border border-blue-200 rounded-large p-5 bg-blue-50">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-small">SCHEDULED</span>
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" class="sr-only peer">
+                    <div class="w-11 h-6 bg-blue-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                  </label>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-gray-900 mb-2">3x Spring Referral Blast</h3>
+                <p class="text-sm text-gray-700 mb-4">Triple rewards for spring season launch campaign</p>
+                <div class="bg-white p-3 rounded-small border border-blue-200 mb-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs text-blue-700">Reward Multiplier</span>
+                    <span class="text-sm font-bold text-blue-600">3x</span>
+                  </div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs text-blue-700">Duration</span>
+                    <span class="text-sm font-semibold text-gray-900">7 days</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-blue-700">Starts in</span>
+                    <span class="text-sm font-semibold text-gray-900">5 days</span>
+                  </div>
+                </div>
+                <div class="space-y-2 mb-4">
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Target Referrals</span>
+                    <span class="font-semibold text-gray-900">2,500</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Est. Conversions</span>
+                    <span class="font-semibold text-gray-900">~750</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Est. Revenue</span>
+                    <span class="font-semibold text-blue-600">$48,000</span>
+                  </div>
+                </div>
+                <button class="w-full px-3 py-2 text-blue-700 hover:bg-blue-100 rounded-small text-sm font-medium border border-blue-300">
+                  Edit Campaign
+                </button>
+              </div>
+
+              <div class="border border-purple-200 rounded-large p-5 bg-purple-50">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-purple-600 bg-purple-100 px-2 py-1 rounded-small">DRAFT</span>
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" class="sr-only peer">
+                    <div class="w-11 h-6 bg-purple-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                  </label>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-gray-900 mb-2">VIP 5x Mega Event</h3>
+                <p class="text-sm text-gray-700 mb-4">Exclusive 5x multiplier for premium members only</p>
+                <div class="bg-white p-3 rounded-small border border-purple-200 mb-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs text-purple-700">Reward Multiplier</span>
+                    <span class="text-sm font-bold text-purple-600">5x</span>
+                  </div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs text-purple-700">Duration</span>
+                    <span class="text-sm font-semibold text-gray-900">3 days</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-purple-700">Status</span>
+                    <span class="text-sm font-semibold text-gray-900">Not scheduled</span>
+                  </div>
+                </div>
+                <div class="space-y-2 mb-4">
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Target Audience</span>
+                    <span class="font-semibold text-gray-900">Premium</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Eligible Users</span>
+                    <span class="font-semibold text-gray-900">1,284</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-700">Est. Revenue</span>
+                    <span class="font-semibold text-purple-600">$32,000</span>
+                  </div>
+                </div>
+                <button class="w-full px-3 py-2 bg-purple-600 text-white hover:bg-purple-700 rounded-small text-sm font-medium">
+                  Schedule Event
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experiment Performance Summary -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <h3 class="font-heading text-lg font-semibold text-gray-900 mb-4">Top Performing Experiments</h3>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Limited-Time Banners</span>
+                  <span class="text-sm font-semibold text-green-600">+34% Conv</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Trial Price ($1/7d)</span>
+                  <span class="text-sm font-semibold text-green-600">+41% Conv</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">CTA Text Variant B</span>
+                  <span class="text-sm font-semibold text-green-600">+23% Conv</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Scarcity Messages</span>
+                  <span class="text-sm font-semibold text-green-600">+34% Conv</span>
+                </div>
+                <div class="flex items-center justify-between pt-3 border-t border-gray-200">
+                  <span class="text-sm font-semibold text-gray-900">Avg Improvement</span>
+                  <span class="text-sm font-bold text-green-600">+33%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <h3 class="font-heading text-lg font-semibold text-gray-900 mb-4">Revenue Attribution</h3>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Banners</span>
+                  <span class="text-sm font-semibold text-gray-900">$28,089</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Trial Pricing</span>
+                  <span class="text-sm font-semibold text-gray-900">$42,847</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Referral Events</span>
+                  <span class="text-sm font-semibold text-gray-900">$18,247</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Push Campaigns</span>
+                  <span class="text-sm font-semibold text-gray-900">$37,817</span>
+                </div>
+                <div class="flex items-center justify-between pt-3 border-t border-gray-200">
+                  <span class="text-sm font-semibold text-gray-900">Total Impact</span>
+                  <span class="text-sm font-bold text-green-600">$127,000</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-large shadow-custom border border-gray-200">
+              <h3 class="font-heading text-lg font-semibold text-gray-900 mb-4">Experiment Health</h3>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Active Tests</span>
+                  <span class="text-sm font-semibold text-gray-900">12</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Winning Variants</span>
+                  <span class="text-sm font-semibold text-gray-900">8</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Statistical Significance</span>
+                  <span class="text-sm font-semibold text-green-600">95%+</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-700">Avg Test Duration</span>
+                  <span class="text-sm font-semibold text-gray-900">14 days</span>
+                </div>
+                <div class="flex items-center justify-between pt-3 border-t border-gray-200">
+                  <span class="text-sm font-semibold text-gray-900">Success Rate</span>
+                  <span class="text-sm font-bold text-green-600">67%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
