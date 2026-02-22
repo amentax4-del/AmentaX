@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AX-M1 — Mentor Landing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link id="heading-font-link" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link id="body-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          spacing: {
+            base: '1rem',
+          },
+          borderRadius: {
+            small: '8px',
+            large: '16px',
+          },
+          boxShadow: {
+            custom: 'var(--shadow-custom)',
+            'custom-hover': 'var(--shadow-custom-hover)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      /* Typography */
+      --font-heading-name: 'Poppins';
+      --font-body-name: 'Inter';
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --letter-spacing-heading: -0.5px;
+      --letter-spacing-body: 0px;
+      
+      /* Spacing */
+      --space-base: 1rem;
+      
+      /* Borders */
+      --radius-small: 8px;
+      --radius-large: 16px;
+      --border-width: 2px;
+      
+      /* Shadows */
+      --shadow-color: 0 0 0;
+      --shadow-offset-x: 0px;
+      --shadow-offset-y: 4px;
+      --shadow-blur: 16px;
+      --shadow-spread: 0px;
+      --shadow-opacity: 0.08;
+      --shadow-custom: 0px 4px 16px rgba(0, 0, 0, 0.08);
+      --shadow-custom-hover: 0px 8px 24px rgba(0, 0, 0, 0.12);
+    }
+  </style>
+</head>
+<body class="font-body bg-gray-50 text-gray-900" style="height: auto; min-height: 100%;">
+  
+  <!-- Navigation -->
+  <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=120&h=40&fit=crop" alt="Logo" class="h-8">
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#how-it-works" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">How It Works</a>
+          <a href="#calculator" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">Income Calculator</a>
+          <a href="#testimonials" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">Success Stories</a>
+          <a href="#faq" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">FAQ</a>
+          <button class="bg-blue-600 text-white px-6 py-2 rounded-small font-medium hover:bg-blue-700 transition-colors shadow-custom">Apply Now</button>
+        </div>
+        <button class="md:hidden text-gray-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-50 to-indigo-50 py-16 sm:py-20 lg:py-24 max-h-[800px]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center bg-blue-100 text-blue-700 px-4 py-2 rounded-small text-sm font-medium mb-6">
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            For IIT & AIIMS Students
+          </div>
+          <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            Earn While You <span class="text-blue-600">Mentor</span>
+          </h1>
+          <p class="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
+            Share your knowledge with aspiring students and earn ₹30,000 - ₹1,50,000 per month. Flexible hours, work from anywhere, make a real impact.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 mb-8">
+            <button class="bg-blue-600 text-white px-8 py-4 rounded-small font-semibold text-lg hover:bg-blue-700 transition-colors shadow-custom hover:shadow-custom-hover">
+              Start Earning Today
+            </button>
+            <button class="bg-white text-gray-700 px-8 py-4 rounded-small font-semibold text-lg hover:bg-gray-50 transition-colors shadow-custom border-2 border-gray-200">
+              Watch Demo
+            </button>
+          </div>
+          <div class="flex items-center gap-8">
+            <div>
+              <div class="font-heading text-3xl font-bold text-gray-900">2,500+</div>
+              <div class="text-sm text-gray-600">Active Mentors</div>
+            </div>
+            <div class="h-12 w-px bg-gray-300"></div>
+            <div>
+              <div class="font-heading text-3xl font-bold text-gray-900">₹85K</div>
+              <div class="text-sm text-gray-600">Avg. Monthly Income</div>
+            </div>
+            <div class="h-12 w-px bg-gray-300"></div>
+            <div>
+              <div class="font-heading text-3xl font-bold text-gray-900">4.9/5</div>
+              <div class="text-sm text-gray-600">Mentor Rating</div>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=600&fit=crop" alt="Mentor teaching" class="rounded-large shadow-custom-hover w-full">
+          <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-large shadow-custom-hover max-w-xs">
+            <div class="flex items-center gap-4">
+              <div class="bg-green-100 p-3 rounded-small">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="font-heading text-2xl font-bold text-gray-900">₹1,24,500</div>
+                <div class="text-sm text-gray-600">Earned this month</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Indicators -->
+  <section class="bg-white py-12 border-b border-gray-200 max-h-[300px]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Trusted by students from</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-60">
+        <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=120&h=60&fit=crop" alt="IIT Delhi" class="h-12 grayscale">
+        <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=120&h=60&fit=crop" alt="IIT Bombay" class="h-12 grayscale">
+        <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=120&h=60&fit=crop" alt="AIIMS Delhi" class="h-12 grayscale">
+        <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=120&h=60&fit=crop" alt="IIT Madras" class="h-12 grayscale">
+        <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=120&h=60&fit=crop" alt="IIT Kanpur" class="h-12 grayscale">
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="py-16 sm:py-20 bg-gray-50 max-h-[900px] overflow-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Start earning in just 3 simple steps. No experience required.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-large shadow-custom">
+          <div class="bg-blue-100 w-16 h-16 rounded-small flex items-center justify-center mb-6">
+            <span class="font-heading text-2xl font-bold text-blue-600">1</span>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-gray-900 mb-3">Apply & Get Verified</h3>
+          <p class="text-gray-600 leading-relaxed">Submit your college ID and academic credentials. We verify your profile within 24 hours.</p>
+        </div>
+        <div class="bg-white p-8 rounded-large shadow-custom">
+          <div class="bg-blue-100 w-16 h-16 rounded-small flex items-center justify-center mb-6">
+            <span class="font-heading text-2xl font-bold text-blue-600">2</span>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-gray-900 mb-3">Set Your Schedule</h3>
+          <p class="text-gray-600 leading-relaxed">Choose your availability and subjects. Work as much or as little as you want.</p>
+        </div>
+        <div class="bg-white p-8 rounded-large shadow-custom">
+          <div class="bg-blue-100 w-16 h-16 rounded-small flex items-center justify-center mb-6">
+            <span class="font-heading text-2xl font-bold text-blue-600">3</span>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-gray-900 mb-3">Start Teaching</h3>
+          <p class="text-gray-600 leading-relaxed">Connect with students, conduct sessions, and get paid weekly directly to your bank.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Income Calculator -->
+  <section id="calculator" class="py-16 sm:py-20 bg-white max-h-[1000px] overflow-auto">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Calculate Your Potential Income</h2>
+        <p class="text-lg text-gray-600">See how much you can earn based on your availability</p>
+      </div>
+      <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 sm:p-12 rounded-large shadow-custom">
+        <div class="space-y-8">
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-3">Hours per week</label>
+            <input type="range" min="5" max="40" value="15" class="w-full h-2 bg-blue-200 rounded-small appearance-none cursor-pointer" id="hoursSlider">
+            <div class="flex justify-between mt-2">
+              <span class="text-sm text-gray-600">5 hrs</span>
+              <span class="text-lg font-bold text-blue-600" id="hoursValue">15 hrs</span>
+              <span class="text-sm text-gray-600">40 hrs</span>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-3">Rate per hour</label>
+            <input type="range" min="500" max="2000" value="800" step="100" class="w-full h-2 bg-blue-200 rounded-small appearance-none cursor-pointer" id="rateSlider">
+            <div class="flex justify-between mt-2">
+              <span class="text-sm text-gray-600">₹500</span>
+              <span class="text-lg font-bold text-blue-600" id="rateValue">₹800</span>
+              <span class="text-sm text-gray-600">₹2000</span>
+            </div>
+          </div>
+          <div class="bg-white p-8 rounded-large shadow-custom-hover border-2 border-blue-200">
+            <div class="text-center">
+              <div class="text-sm font-medium text-gray-600 mb-2">Your Estimated Monthly Income</div>
+              <div class="font-heading text-5xl font-bold text-gray-900 mb-2" id="monthlyIncome">₹48,000</div>
+              <div class="text-sm text-gray-600">Based on 4 weeks per month</div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-gray-200">
+              <div>
+                <div class="text-sm text-gray-600">Weekly</div>
+                <div class="font-heading text-xl font-bold text-gray-900" id="weeklyIncome">₹12,000</div>
+              </div>
+              <div>
+                <div class="text-sm text-gray-600">Yearly</div>
+                <div class="font-heading text-xl font-bold text-gray-900" id="yearlyIncome">₹5,76,000</div>
+              </div>
+            </div>
+          </div>
+          <button class="w-full bg-blue-600 text-white px-8 py-4 rounded-small font-semibold text-lg hover:bg-blue-700 transition-colors shadow-custom">
+            Apply to Start Earning
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof / Testimonials -->
+  <section id="testimonials" class="py-16 sm:py-20 bg-gray-50 max-h-[1000px] overflow-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Success Stories</h2>
+        <p class="text-lg text-gray-600">Hear from mentors who are making a difference</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-large shadow-custom">
+          <div class="flex items-center gap-1 mb-4">
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+          </div>
+          <p class="text-gray-700 mb-6 leading-relaxed">"I'm earning ₹95,000 per month while completing my B.Tech. The flexibility is amazing and I love helping students achieve their dreams."</p>
+          <div class="flex items-center gap-4">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&h=48&fit=crop" alt="Mentor" class="w-12 h-12 rounded-full">
+            <div>
+              <div class="font-semibold text-gray-900">Rahul Sharma</div>
+              <div class="text-sm text-gray-600">IIT Delhi, 4th Year</div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-8 rounded-large shadow-custom">
+          <div class="flex items-center gap-1 mb-4">
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+          </div>
+          <p class="text-gray-700 mb-6 leading-relaxed">"Best decision I made! I work 10 hours a week and earn enough to cover all my expenses. The platform is super easy to use."</p>
+          <div class="flex items-center gap-4">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=48&h=48&fit=crop" alt="Mentor" class="w-12 h-12 rounded-full">
+            <div>
+              <div class="font-semibold text-gray-900">Priya Patel</div>
+              <div class="text-sm text-gray-600">AIIMS Delhi, 3rd Year</div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-8 rounded-large shadow-custom">
+          <div class="flex items-center gap-1 mb-4">
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+          </div>
+          <p class="text-gray-700 mb-6 leading-relaxed">"The support team is incredible. They helped me set up my profile and I got my first student within 2 days. Highly recommend!"</p>
+          <div class="flex items-center gap-4">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=48&h=48&fit=crop" alt="Mentor" class="w-12 h-12 rounded-full">
+            <div>
+              <div class="font-semibold text-gray-900">Arjun Kumar</div>
+              <div class="text-sm text-gray-600">IIT Bombay, 5th Year</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-16 sm:py-20 bg-white max-h-[1200px] overflow-auto">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+        <p class="text-lg text-gray-600">Everything you need to know about becoming a mentor</p>
+      </div>
+      <div class="space-y-4">
+        <div class="bg-gray-50 rounded-large p-6 border-2 border-gray-200">
+          <button class="flex justify-between items-center w-full text-left">
+            <h3 class="font-heading text-lg font-semibold text-gray-900">Who can become a mentor?</h3>
+            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <p class="text-gray-600 mt-4 leading-relaxed">Current students or recent graduates from IIT, AIIMS, or other premier institutions. You need to provide valid college ID and academic credentials for verification.</p>
+        </div>
+        <div class="bg-gray-50 rounded-large p-6 border-2 border-gray-200">
+          <button class="flex justify-between items-center w-full text-left">
+            <h3 class="font-heading text-lg font-semibold text-gray-900">How much can I earn?</h3>
+            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <p class="text-gray-600 mt-4 leading-relaxed">Earnings vary based on hours worked and your hourly rate (₹500-₹2000/hr). Most mentors earn between ₹30,000 to ₹1,50,000 per month. The average is around ₹85,000/month.</p>
+        </div>
+        <div class="bg-gray-50 rounded-large p-6 border-2 border-gray-200">
+          <button class="flex justify-between items-center w-full text-left">
+            <h3 class="font-heading text-lg font-semibold text-gray-900">When do I get paid?</h3>
+            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <p class="text-gray-600 mt-4 leading-relaxed">Payments are processed weekly directly to your bank account. You'll receive payment every Monday for sessions completed in the previous week.</p>
+        </div>
+        <div class="bg-gray-50 rounded-large p-6 border-2 border-gray-200">
+          <button class="flex justify-between items-center w-full text-left">
+            <h3 class="font-heading text-lg font-semibold text-gray-900">Do I need teaching experience?</h3>
+            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <p class="text-gray-600 mt-4 leading-relaxed">No prior teaching experience required! We provide training materials and support to help you become an effective mentor. Your academic credentials and passion for teaching are what matter most.</p>
+        </div>
+        <div class="bg-gray-50 rounded-large p-6 border-2 border-gray-200">
+          <button class="flex justify-between items-center w-full text-left">
+            <h3 class="font-heading text-lg font-semibold text-gray-900">How flexible is the schedule?</h3>
+            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <p class="text-gray-600 mt-4 leading-relaxed">Completely flexible! You set your own availability and can update it anytime. Work as much or as little as you want - perfect for balancing with your studies or other commitments.</p>
+        </div>
+        <div class="bg-gray-50 rounded-large p-6 border-2 border-gray-200">
+          <button class="flex justify-between items-center w-full text-left">
+            <h3 class="font-heading text-lg font-semibold text-gray-900">What subjects can I teach?</h3>
+            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <p class="text-gray-600 mt-4 leading-relaxed">You can teach any subject you're comfortable with - JEE/NEET preparation, college-level courses, competitive exam prep, or specialized topics in your field of study.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-indigo-600 py-16 sm:py-20 max-h-[500px]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-6">Ready to Start Earning?</h2>
+      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">Join 2,500+ mentors who are making a difference while earning great income</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button class="bg-white text-blue-600 px-8 py-4 rounded-small font-semibold text-lg hover:bg-gray-50 transition-colors shadow-custom-hover">
+          Apply Now - It's Free
+        </button>
+        <button class="bg-transparent text-white px-8 py-4 rounded-small font-semibold text-lg hover:bg-white hover:bg-opacity-10 transition-colors border-2 border-white">
+          Schedule a Call
+        </button>
+      </div>
+      <p class="text-sm text-blue-100 mt-6">No credit card required • Get verified in 24 hours</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-12 max-h-[600px] overflow-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=120&h=40&fit=crop" alt="Logo" class="h-8 mb-4 brightness-200">
+          <p class="text-sm text-gray-400">Empowering students through quality mentorship from India's best institutions.</p>
+        </div>
+        <div>
+          <h3 class="font-heading text-white font-semibold mb-4">For Mentors</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-white transition-colors">Become a Mentor</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">How It Works</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Success Stories</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Resources</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-heading text-white font-semibold mb-4">Company</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-heading text-white font-semibold mb-4">Legal</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center">
+        <p class="text-sm text-gray-400">© 2024 MentorConnect. All rights reserved.</p>
+        <div class="flex gap-6 mt-4 sm:mt-0">
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+            </svg>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path>
+            </svg>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 16.892c-2.102.144-6.784.144-8.883 0C5.282 16.736 5.017 15.622 5 12c.017-3.629.285-4.736 2.558-4.892 2.099-.144 6.782-.144 8.883 0C18.718 7.264 18.982 8.378 19 12c-.018 3.629-.285 4.736-2.559 4.892zM10 9.658l4.917 2.338L10 14.342V9.658z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Income Calculator
+    const hoursSlider = document.getElementById('hoursSlider');
+    const rateSlider = document.getElementById('rateSlider');
+    const hoursValue = document.getElementById('hoursValue');
+    const rateValue = document.getElementById('rateValue');
+    const monthlyIncome = document.getElementById('monthlyIncome');
+    const weeklyIncome = document.getElementById('weeklyIncome');
+    const yearlyIncome = document.getElementById('yearlyIncome');
+
+    function updateIncome() {
+      const hours = parseInt(hoursSlider.value);
+      const rate = parseInt(rateSlider.value);
+      
+      hoursValue.textContent = hours + ' hrs';
+      rateValue.textContent = '₹' + rate;
+      
+      const weekly = hours * rate;
+      const monthly = weekly * 4;
+      const yearly = monthly * 12;
+      
+      weeklyIncome.textContent = '₹' + weekly.toLocaleString('en-IN');
+      monthlyIncome.textContent = '₹' + monthly.toLocaleString('en-IN');
+      yearlyIncome.textContent = '₹' + yearly.toLocaleString('en-IN');
+    }
+
+    hoursSlider.addEventListener('input', updateIncome);
+    rateSlider.addEventListener('input', updateIncome);
+    
+    // Initialize
+    updateIncome();
+  </script>
+
+</body>
+</html>

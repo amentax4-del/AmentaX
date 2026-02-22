@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AX-M2 — Mentor Signup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link id="heading-font-link" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link id="body-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          spacing: {
+            base: '1rem',
+          },
+          borderRadius: {
+            small: '8px',
+            large: '16px',
+          },
+          boxShadow: {
+            custom: 'var(--shadow-custom)',
+            'custom-hover': 'var(--shadow-custom-hover)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      /* Typography */
+      --font-heading-name: 'Poppins';
+      --font-body-name: 'Inter';
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --letter-spacing-heading: -0.5px;
+      --letter-spacing-body: 0px;
+      
+      /* Spacing */
+      --space-base: 1rem;
+      
+      /* Borders */
+      --radius-small: 8px;
+      --radius-large: 16px;
+      --border-width: 2px;
+      
+      /* Shadows */
+      --shadow-color: 0 0 0;
+      --shadow-offset-x: 0px;
+      --shadow-offset-y: 4px;
+      --shadow-blur: 16px;
+      --shadow-spread: 0px;
+      --shadow-opacity: 0.08;
+      --shadow-custom: 0px 4px 16px rgba(0, 0, 0, 0.08);
+      --shadow-custom-hover: 0px 8px 24px rgba(0, 0, 0, 0.12);
+    }
+  </style>
+</head>
+<body class="font-body bg-gray-50 text-gray-900" style="height: auto; min-height: 100%;">
+  
+  <!-- Navigation -->
+  <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <a href="mentor-landing.html">
+            <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=120&h=40&fit=crop" alt="Logo" class="h-8">
+          </a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="mentor-landing.html" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">Back to Home</a>
+          <a href="#" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">Help</a>
+        </div>
+        <button class="md:hidden text-gray-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <section class="py-8 sm:py-12 max-h-[1400px] overflow-auto">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Progress Bar -->
+      <div class="mb-8">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-sm font-medium text-gray-700">Step 1 of 3</span>
+          <span class="text-sm font-medium text-gray-700">33% Complete</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2">
+          <div class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 33%"></div>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <h1 class="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Create Your Mentor Profile</h1>
+        <p class="text-lg text-gray-600">Join 2,500+ mentors earning while making an impact</p>
+      </div>
+
+      <!-- Trust Indicators -->
+      <div class="bg-blue-50 border-2 border-blue-200 rounded-large p-6 mb-8">
+        <div class="flex items-start gap-4">
+          <div class="bg-blue-600 p-2 rounded-small flex-shrink-0">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-heading text-lg font-semibold text-gray-900 mb-2">Your Information is Secure</h3>
+            <p class="text-sm text-gray-700 leading-relaxed">We verify all mentors to maintain quality. Your data is encrypted and never shared without permission. Most applications are approved within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Signup Form -->
+      <div class="bg-white rounded-large shadow-custom p-6 sm:p-8">
+        <form>
+          <!-- Personal Information Section -->
+          <div class="mb-8">
+            <h2 class="font-heading text-xl font-semibold text-gray-900 mb-6">Personal Information</h2>
+            
+            <div class="grid sm:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">First Name *</label>
+                <input type="text" placeholder="Enter your first name" class="w-full px-4 py-3 border-2 border-gray-300 rounded-small focus:border-blue-500 focus:outline-none transition-colors" required>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Last Name *</label>
+                <input type="text" placeholder="Enter your last name" class="w-full px-4 py-3 border-2 border-gray-300 rounded-small focus:border-blue-500 focus:outline-none transition-colors" required>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+              <input type="email" placeholder="your.email@example.com" class="w-full px-4 py-3 border-2 border-gray-300 rounded-small focus:border-blue-500 focus:outline-none transition-colors" required>
+              <p class="text-xs text-gray-500 mt-1">We'll send verification and updates to this email</p>
+            </div>
+
+            <div class="mb-6">
+              <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
+              <input type="tel" placeholder="+91 98765 43210" class="w-full px-4 py-3 border-2 border-gray-300 rounded-small focus:border-blue-500 focus:outline-none transition-colors" required>
+            </div>
+          </div>
+
+          <!-- Academic Information Section -->
+          <div class="mb-8 pt-8 border-t-2 border-gray-200">
+            <h2 class="font-heading text-xl font-semibold text-gray-900 mb-6">Academic Credentials</h2>
+            
+            <div class="mb-6">
+              <label class="block text-sm font-semibold text-gray-700 mb-2">College/Institution *</label>
+              <select class="w-full px-4 py-3 border-2 border-gray-300 rounded-small focus:border-blue-500 focus:outline-none transition-colors appearance-none bg-white" required>
+                <option value="">Select your college</option>
+                <option value="iit-delhi">IIT Delhi</option>
+                <option value="iit-bombay">IIT Bombay</option>
+                <option value="iit-madras">IIT Madras</option>
+                <option value="iit-kanpur">IIT Kanpur</option>
+                <option value="iit-kharagpur">IIT Kharagpur</option>
+                <option value="iit-roorkee">IIT Roorkee</option>
+                <option value="iit-guwahati">IIT Guwahati</option>
+                <option value="aiims-delhi">AIIMS Delhi</option>
+                <option value="aiims-mumbai">AIIMS Mumbai</option>
+                <option value="nit">NIT (Any Campus)</option>
+                <option value="other">Other Premier Institution</option>
+              </select>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Current Year *</label>
+                <select class="w-full px-4 py-3 border-2 border-gray-300 rounded-small focus:border-blue-500 focus:outline-none transition-colors appearance-none bg-white" required>
+                  <option value="">Select year</option>
+                  <option value="1">1st Year</option>
+                  <option value="2">2nd Year</option>
+                  <option value="3">3rd Year</option>
+                  <option value="4">4th Year</option>
+                  <option value="5">5th Year</option>
+                  <option value="graduate">Recent Graduate</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Branch/Stream *</label>
+                <input type="text" placeholder="e.g., Computer Science" class="w-full px-4 py-3 border-2 border-gray-300 rounded-small focus:border-blue-500 focus:outline-none transition-colors" required>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <label class="block text-sm font-semibold text-gray-700 mb-2">JEE/NEET AIR (All India Rank) *</label>
+              <input type="number" placeholder="Enter your rank" class="w-full px-4 py-3 border-2 border-gray-300 rounded-small focus:border-blue-500 focus:outline-none transition-colors" required>
+              <p class="text-xs text-gray-500 mt-1">This helps us match you with the right students</p>
+            </div>
+
+            <div class="mb-6">
+              <label class="block text-sm font-semibold text-gray-700 mb-2">Upload Rank Proof *</label>
+              <div class="border-2 border-dashed border-gray-300 rounded-large p-6 text-center hover:border-blue-500 transition-colors cursor-pointer">
+                <svg class="w-12 h-12 text-gray-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                </svg>
+                <p class="text-sm font-medium text-gray-700 mb-1">Click to upload or drag and drop</p>
+                <p class="text-xs text-gray-500">JEE/NEET scorecard or admit card (PDF, JPG, PNG up to 5MB)</p>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <label class="block text-sm font-semibold text-gray-700 mb-2">Upload College ID *</label>
+              <div class="border-2 border-dashed border-gray-300 rounded-large p-6 text-center hover:border-blue-500 transition-colors cursor-pointer">
+                <svg class="w-12 h-12 text-gray-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                </svg>
+                <p class="text-sm font-medium text-gray-700 mb-1">Click to upload or drag and drop</p>
+                <p class="text-xs text-gray-500">Valid student ID card (PDF, JPG, PNG up to 5MB)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Optional Information Section -->
+          <div class="mb-8 pt-8 border-t-2 border-gray-200">
+            <h2 class="font-heading text-xl font-semibold text-gray-900 mb-2">Additional Information</h2>
+            <p class="text-sm text-gray-600 mb-6">Optional but helps build credibility with students</p>
+            
+            <div class="mb-6">
+              <label class="block text-sm font-semibold text-gray-700 mb-2">LinkedIn Profile (Optional)</label>
+              <input type="url" placeholder="https://linkedin.com/in/yourprofile" class="w-full px-4 py-3 border-2 border-gray-300 rounded-small focus:border-blue-500 focus:outline-none transition-colors">
+              <p class="text-xs text-gray-500 mt-1">Increases profile credibility by 40%</p>
+            </div>
+
+            <div class="mb-6">
+              <label class="block text-sm font-semibold text-gray-700 mb-2">Brief Bio (Optional)</label>
+              <textarea rows="4" placeholder="Tell students about your journey, achievements, and teaching approach..." class="w-full px-4 py-3 border-2 border-gray-300 rounded-large focus:border-blue-500 focus:outline-none transition-colors resize-none"></textarea>
+              <p class="text-xs text-gray-500 mt-1">Profiles with bios get 3x more student requests</p>
+            </div>
+          </div>
+
+          <!-- Terms and Conditions -->
+          <div class="mb-8 pt-8 border-t-2 border-gray-200">
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="w-5 h-5 text-blue-600 border-2 border-gray-300 rounded focus:ring-2 focus:ring-blue-500 mt-0.5" required>
+              <span class="text-sm text-gray-700 leading-relaxed">I agree to the <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Terms of Service</a> and <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Privacy Policy</a>. I confirm that all information provided is accurate and I am authorized to use the uploaded documents.</span>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button type="submit" class="flex-1 bg-blue-600 text-white px-8 py-4 rounded-small font-semibold text-lg hover:bg-blue-700 transition-colors shadow-custom hover:shadow-custom-hover">
+              Continue to Next Step
+            </button>
+            <button type="button" class="sm:w-auto bg-white text-gray-700 px-8 py-4 rounded-small font-semibold text-lg hover:bg-gray-50 transition-colors border-2 border-gray-300">
+              Save as Draft
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Trust Footer -->
+      <div class="mt-8 text-center">
+        <div class="flex items-center justify-center gap-8 text-sm text-gray-600">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            <span>24-hour verification</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            <span>Secure & encrypted</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            <span>No credit card needed</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Help Section -->
+  <section class="bg-white border-t border-gray-200 py-12 max-h-[400px]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="font-heading text-2xl font-bold text-gray-900 mb-3">Need Help?</h2>
+        <p class="text-gray-600">Our support team is here to assist you</p>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="text-center">
+          <div class="bg-blue-100 w-12 h-12 rounded-small flex items-center justify-center mx-auto mb-3">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+          </div>
+          <h3 class="font-heading text-sm font-semibold text-gray-900 mb-1">Live Chat</h3>
+          <p class="text-xs text-gray-600">Available 9 AM - 9 PM</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-blue-100 w-12 h-12 rounded-small flex items-center justify-center mx-auto mb-3">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="font-heading text-sm font-semibold text-gray-900 mb-1">Email Support</h3>
+          <p class="text-xs text-gray-600">support@mentorconnect.com</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-blue-100 w-12 h-12 rounded-small flex items-center justify-center mx-auto mb-3">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="font-heading text-sm font-semibold text-gray-900 mb-1">FAQ</h3>
+          <p class="text-xs text-gray-600">Common questions answered</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-8 max-h-[300px] overflow-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center">
+        <div class="mb-4 sm:mb-0">
+          <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=120&h=40&fit=crop" alt="Logo" class="h-8 brightness-200">
+        </div>
+        <div class="flex gap-6 text-sm">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-white transition-colors">Contact</a>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-6 pt-6 text-center">
+        <p class="text-sm text-gray-400">© 2024 MentorConnect. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

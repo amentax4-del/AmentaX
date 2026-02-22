@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AX-M3 — Verification Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link id="heading-font-link" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link id="body-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          spacing: {
+            base: '1rem',
+          },
+          borderRadius: {
+            small: '8px',
+            large: '16px',
+          },
+          boxShadow: {
+            custom: 'var(--shadow-custom)',
+            'custom-hover': 'var(--shadow-custom-hover)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      /* Typography */
+      --font-heading-name: 'Poppins';
+      --font-body-name: 'Inter';
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --letter-spacing-heading: -0.5px;
+      --letter-spacing-body: 0px;
+      
+      /* Spacing */
+      --space-base: 1rem;
+      
+      /* Borders */
+      --radius-small: 8px;
+      --radius-large: 16px;
+      --border-width: 2px;
+      
+      /* Shadows */
+      --shadow-color: 0 0 0;
+      --shadow-offset-x: 0px;
+      --shadow-offset-y: 4px;
+      --shadow-blur: 16px;
+      --shadow-spread: 0px;
+      --shadow-opacity: 0.08;
+      --shadow-custom: 0px 4px 16px rgba(0, 0, 0, 0.08);
+      --shadow-custom-hover: 0px 8px 24px rgba(0, 0, 0, 0.12);
+    }
+  </style>
+</head>
+<body class="font-body bg-gray-50 text-gray-900" style="height: auto; min-height: 100%;">
+  
+  <!-- Navigation -->
+  <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <a href="mentor-landing.html">
+            <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=120&h=40&fit=crop" alt="Logo" class="h-8">
+          </a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="mentor-landing.html" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">Home</a>
+          <a href="mentor-signup.html" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">Application</a>
+          <a href="#" class="text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">Help</a>
+        </div>
+        <button class="md:hidden text-gray-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <section class="py-8 sm:py-12 max-h-[1400px] overflow-auto">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center bg-blue-100 text-blue-700 px-4 py-2 rounded-small text-sm font-medium mb-4">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          Application Submitted Successfully
+        </div>
+        <h1 class="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Verification in Progress</h1>
+        <p class="text-lg text-gray-600">We're reviewing your application. Most verifications complete within 24 hours.</p>
+      </div>
+
+      <!-- Status Overview Card -->
+      <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-large p-6 sm:p-8 mb-8 shadow-custom">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div class="text-center sm:text-left">
+            <div class="text-sm font-medium text-gray-600 mb-1">Application ID</div>
+            <div class="font-heading text-2xl font-bold text-gray-900 mb-3">#MNT-2024-8472</div>
+            <div class="inline-flex items-center bg-yellow-100 text-yellow-800 px-3 py-1 rounded-small text-sm font-medium">
+              <svg class="w-4 h-4 mr-2 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+              </svg>
+              Under Review
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-sm font-medium text-gray-600 mb-2">Estimated Completion</div>
+            <div class="font-heading text-3xl font-bold text-blue-600">18 hrs</div>
+            <div class="text-xs text-gray-500 mt-1">By tomorrow 2:00 PM</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Verification Steps -->
+      <div class="bg-white rounded-large shadow-custom p-6 sm:p-8 mb-8">
+        <h2 class="font-heading text-xl font-semibold text-gray-900 mb-6">Verification Steps</h2>
+        
+        <!-- Step 1 - Completed -->
+        <div class="flex gap-4 mb-8">
+          <div class="flex flex-col items-center">
+            <div class="bg-green-600 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <div class="w-0.5 h-16 bg-green-600 mt-2"></div>
+          </div>
+          <div class="flex-1 pb-8">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-heading text-lg font-semibold text-gray-900">Application Received</h3>
+              <span class="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-small">Completed</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-2">Your application has been successfully submitted and logged in our system.</p>
+            <div class="text-xs text-gray-500">Completed at 10:30 AM, Dec 15, 2024</div>
+          </div>
+        </div>
+
+        <!-- Step 2 - In Progress -->
+        <div class="flex gap-4 mb-8">
+          <div class="flex flex-col items-center">
+            <div class="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 animate-pulse">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+            <div class="w-0.5 h-16 bg-gray-300 mt-2"></div>
+          </div>
+          <div class="flex-1 pb-8">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-heading text-lg font-semibold text-gray-900">Document Verification</h3>
+              <span class="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-small">In Progress</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-3">Our team is verifying your college ID, rank proof, and academic credentials.</p>
+            <div class="bg-blue-50 border-2 border-blue-200 rounded-large p-4">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <div>
+                  <div class="text-sm font-medium text-gray-900 mb-1">What's happening now?</div>
+                  <p class="text-xs text-gray-700">Our verification team is cross-checking your documents with institutional databases and validating authenticity.</p>
+                </div>
+              </div>
+            </div>
+            <div class="text-xs text-gray-500 mt-2">Started at 10:35 AM • Est. completion: 6:00 PM today</div>
+          </div>
+        </div>
+
+        <!-- Step 3 - Pending -->
+        <div class="flex gap-4 mb-8">
+          <div class="flex flex-col items-center">
+            <div class="bg-gray-300 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div class="w-0.5 h-16 bg-gray-300 mt-2"></div>
+          </div>
+          <div class="flex-1 pb-8">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-heading text-lg font-semibold text-gray-900">Background Check</h3>
+              <span class="text-xs font-medium text-gray-600 bg-gray-200 px-2 py-1 rounded-small">Pending</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-2">Quick background verification to ensure platform safety and quality standards.</p>
+            <div class="text-xs text-gray-500">Will start after document verification • Est. duration: 4-6 hours</div>
+          </div>
+        </div>
+
+        <!-- Step 4 - Pending -->
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <div class="bg-gray-300 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-heading text-lg font-semibold text-gray-900">Final Approval</h3>
+              <span class="text-xs font-medium text-gray-600 bg-gray-200 px-2 py-1 rounded-small">Pending</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-2">Final review and account activation. You'll receive welcome email with next steps.</p>
+            <div class="text-xs text-gray-500">Will start after background check • Est. duration: 2-4 hours</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- What Happens Next -->
+      <div class="bg-white rounded-large shadow-custom p-6 sm:p-8 mb-8">
+        <h2 class="font-heading text-xl font-semibold text-gray-900 mb-6">What Happens Next?</h2>
+        <div class="space-y-4">
+          <div class="flex gap-4">
+            <div class="bg-blue-100 p-2 rounded-small flex-shrink-0 h-fit">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-heading text-base font-semibold text-gray-900 mb-1">Email Notifications</h3>
+              <p class="text-sm text-gray-600">We'll send you email updates at each verification stage. Check your inbox regularly.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="bg-blue-100 p-2 rounded-small flex-shrink-0 h-fit">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-heading text-base font-semibold text-gray-900 mb-1">SMS Updates</h3>
+              <p class="text-sm text-gray-600">Important status changes will be sent via SMS to your registered mobile number.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="bg-blue-100 p-2 rounded-small flex-shrink-0 h-fit">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-heading text-base font-semibold text-gray-900 mb-1">Account Activation</h3>
+              <p class="text-sm text-gray-600">Once approved, you'll receive login credentials and access to your mentor dashboard.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="bg-blue-100 p-2 rounded-small flex-shrink-0 h-fit">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-heading text-base font-semibold text-gray-900 mb-1">Onboarding Training</h3>
+              <p class="text-sm text-gray-600">Access training materials and resources to help you become an effective mentor.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Chat Support -->
+      <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-large shadow-custom p-6 sm:p-8 mb-8 border-2 border-green-200">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+          <div class="bg-green-600 p-4 rounded-large flex-shrink-0">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="font-heading text-xl font-semibold text-gray-900 mb-2">Have Questions? We're Here to Help</h3>
+            <p class="text-sm text-gray-700 mb-4">Our support team is available to answer any questions about your verification status or the application process.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <button class="bg-green-600 text-white px-6 py-3 rounded-small font-semibold hover:bg-green-700 transition-colors shadow-custom flex items-center justify-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                </svg>
+                Start Live Chat
+              </button>
+              <button class="bg-white text-gray-700 px-6 py-3 rounded-small font-semibold hover:bg-gray-50 transition-colors border-2 border-gray-300 flex items-center justify-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                </svg>
+                Call Support
+              </button>
+            </div>
+            <div class="flex items-center gap-2 mt-4 text-xs text-gray-600">
+              <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span>Support team online • Average response time: 2 minutes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="bg-white rounded-large shadow-custom p-6 sm:p-8 mb-8">
+        <h2 class="font-heading text-xl font-semibold text-gray-900 mb-6">Common Questions During Verification</h2>
+        <div class="space-y-4">
+          <div class="border-2 border-gray-200 rounded-large p-4 hover:border-blue-300 transition-colors">
+            <button class="flex justify-between items-center w-full text-left">
+              <h3 class="font-heading text-base font-semibold text-gray-900">How long does verification take?</h3>
+              <svg class="w-5 h-5 text-gray-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <p class="text-sm text-gray-600 mt-3 leading-relaxed">Most verifications complete within 24 hours. Complex cases may take up to 48 hours. We'll notify you immediately once approved.</p>
+          </div>
+          <div class="border-2 border-gray-200 rounded-large p-4 hover:border-blue-300 transition-colors">
+            <button class="flex justify-between items-center w-full text-left">
+              <h3 class="font-heading text-base font-semibold text-gray-900">What if my documents are rejected?</h3>
+              <svg class="w-5 h-5 text-gray-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <p class="text-sm text-gray-600 mt-3 leading-relaxed">We'll email you with specific reasons and allow you to resubmit corrected documents. Most issues are easily resolved.</p>
+          </div>
+          <div class="border-2 border-gray-200 rounded-large p-4 hover:border-blue-300 transition-colors">
+            <button class="flex justify-between items-center w-full text-left">
+              <h3 class="font-heading text-base font-semibold text-gray-900">Can I update my application?</h3>
+              <svg class="w-5 h-5 text-gray-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <p class="text-sm text-gray-600 mt-3 leading-relaxed">Yes, contact support via live chat to update any information. We can pause verification while you make changes.</p>
+          </div>
+          <div class="border-2 border-gray-200 rounded-large p-4 hover:border-blue-300 transition-colors">
+            <button class="flex justify-between items-center w-full text-left">
+              <h3 class="font-heading text-base font-semibold text-gray-900">Will I be notified of status changes?</h3>
+              <svg class="w-5 h-5 text-gray-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <p class="text-sm text-gray-600 mt-3 leading-relaxed">Yes, you'll receive email and SMS notifications at each verification stage. You can also check this page anytime for real-time updates.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4">
+        <button class="flex-1 bg-white text-gray-700 px-6 py-4 rounded-small font-semibold hover:bg-gray-50 transition-colors border-2 border-gray-300 flex items-center justify-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+          </svg>
+          Refresh Status
+        </button>
+        <button class="flex-1 bg-blue-600 text-white px-6 py-4 rounded-small font-semibold hover:bg-blue-700 transition-colors shadow-custom flex items-center justify-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          Resend Verification Email
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-8 max-h-[300px] overflow-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center">
+        <div class="mb-4 sm:mb-0">
+          <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=120&h=40&fit=crop" alt="Logo" class="h-8 brightness-200">
+        </div>
+        <div class="flex gap-6 text-sm">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-white transition-colors">Contact</a>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-6 pt-6 text-center">
+        <p class="text-sm text-gray-400">© 2024 MentorConnect. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
